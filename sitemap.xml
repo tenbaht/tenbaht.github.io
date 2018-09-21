@@ -3,45 +3,45 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.example.org/posts/</loc>
+    <loc>https://tenbaht.github.io/posts/</loc>
     <lastmod>2018-09-21T22:29:17+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.org/about/</loc>
+    <loc>https://tenbaht.github.io/about/</loc>
     <lastmod>2018-09-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.org/posts/binaries-for-plotkicadsch/</loc>
+    <loc>https://tenbaht.github.io/posts/binaries-for-plotkicadsch/</loc>
     <lastmod>2018-09-21T22:29:17+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.org/categories/</loc>
+    <loc>https://tenbaht.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.org/categories/electronics/</loc>
+    <loc>https://tenbaht.github.io/categories/electronics/</loc>
     <lastmod>2018-09-21T22:29:17+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.org/</loc>
+    <loc>https://tenbaht.github.io/</loc>
     <lastmod>2018-09-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.org/tags/kicad/</loc>
+    <loc>https://tenbaht.github.io/tags/kicad/</loc>
     <lastmod>2018-09-21T22:29:17+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.org/tags/</loc>
+    <loc>https://tenbaht.github.io/tags/</loc>
     <lastmod>2018-09-21T22:29:17+02:00</lastmod>
     <priority>0</priority>
   </url>
