@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kicad on Embedded notes</title>
+    <link>https://www.example.org/tags/kicad/</link>
+    <description>Recent content in Kicad on Embedded notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2018 - Michael Mayer</copyright>
+    <lastBuildDate>Fri, 21 Sep 2018 22:29:17 +0200</lastBuildDate>
+    
+	<atom:link href="https://www.example.org/tags/kicad/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Binaries for plotkicadsch</title>
+      <link>https://www.example.org/posts/binaries-for-plotkicadsch/</link>
+      <pubDate>Fri, 21 Sep 2018 22:29:17 +0200</pubDate>
+      
+      <guid>https://www.example.org/posts/binaries-for-plotkicadsch/</guid>
+      <description>Installing the precompiled binaries Download my binaries for plotkicadsch
+ for Mint 19/Ubuntu 18.04, 64 bit  Unpack the file to a convinient location like /usr/local/bin:
+sudo tar xvzf plotkicadsch_v0.</description>
+    </item>
+    
+  </channel>
+</rss>

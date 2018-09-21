@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Embedded notes</title>
+    <link>https://www.example.org/</link>
+    <description>Recent content on Embedded notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2018 - Michael Mayer</copyright>
+    <lastBuildDate>Fri, 21 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.example.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My projects</title>
+      <link>https://www.example.org/about/</link>
+      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.example.org/about/</guid>
+      <description>I am a developer for embedded systems. I work on hardware as well as on low-level software.
+My current projects (apart from my one-year old son):
+ SDuino: Adopting the Arduino environment for the STM8 MCU building a Shapeoko CNC mill UV exposure unit for PCB prototyping (etching mask and solder mask) reflow oven: Control electronics and software SMT pick and place machine: Develop and build, using DC motors from inkjet printers  Available tools:</description>
+    </item>
+    
+    <item>
+      <title>Binaries for plotkicadsch</title>
+      <link>https://www.example.org/posts/binaries-for-plotkicadsch/</link>
+      <pubDate>Fri, 21 Sep 2018 22:29:17 +0200</pubDate>
+      
+      <guid>https://www.example.org/posts/binaries-for-plotkicadsch/</guid>
+      <description>Installing the precompiled binaries Download my binaries for plotkicadsch
+ for Mint 19/Ubuntu 18.04, 64 bit  Unpack the file to a convinient location like /usr/local/bin:
+sudo tar xvzf plotkicadsch_v0.</description>
+    </item>
+    
+  </channel>
+</rss>
