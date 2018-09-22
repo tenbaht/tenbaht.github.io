@@ -1,0 +1,583 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Embedded notes</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Michael Mayer" />
+  <meta name="generator" content="Hugo 0.40.1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://tenbaht.github.io/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://tenbaht.github.io/">Embedded notes</a>
+            </h1>
+
+      <ul id="social-media">
+          
+        <li><a href="https://github.com/https://github.com/tenbaht"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
+           
+      </ul>
+      
+      <p><em>Quick notes on embedded systems, electronics and CNC</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://tenbaht.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://tenbaht.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>My projects</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>SMD reflow oven from the dumpster</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2018-04-01T00:02:36&#43;02:00">1. April 2018</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://tenbaht.github.io/categories/pcb/">PCB</a>
+                
+                    , 
+                    <a href="https://tenbaht.github.io/categories/smt/">SMT</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://tenbaht.github.io/tags/electronic/">#electronic</a>
+                
+                    , 
+                    <a href="https://tenbaht.github.io/tags/reflow-oven/">#reflow oven</a>
+                
+            </em>
+        </li>
+        
+
+        <li>0 min read</li>
+    </ul>
+</aside>
+    
+
+    <p><img src="https://tenbaht.github.io/images/reflow-800.jpg" alt="my reflow oven" /></p>
+
+<p>A while ago I found a toaster oven in the trash and now I converted it into
+a reflow oven for soldering of SMD circuit boards.</p>
+
+<p></p>
+
+<p>The toaster oven contains four heating elements, two elements on the top and
+two at the bottom of the oven, 1200W in total.  Each pair is connected in series, the two
+pairs are connected in parallel to the mechanical temperature controller and
+the mechanical timer switch.</p>
+
+<p>This setup would allow for an independent control of top and bottom heat as
+with Peter Eastons <a href="https://github.com/engineertype/ControLeo2">ControLeo2</a>,
+but I kept it simple and connect them together.  This might change in a
+future version.</p>
+
+<p>The timer and temperature control are removed and replaced by a solid-state
+relay to switch the heating elements.  Simple mechanical relays would also
+have been ok as well.  The glow lamp in the power lamp is replaced by a a
+red LED and used to indicate the relay status.</p>
+
+<p>The oven features a small overtemperature fuse 216°C/10A/4mm mounted on the
+outside of the furnace chamber.  This maximum temperature is sufficient for
+leaded soldering, for lead-free soldering it might be neccessary to replace
+it with a slightly higher rated fuse.</p>
+
+<p>Possible alternatives from <a href="https://www.reichelt.de">Reichelt</a>:</p>
+
+<ul>
+<li>MTS 240 Temperatursicherung, 10A, 240°C, 0,48€</li>
+<li>MTS 228 Temperatursicherung, 10A, 228°C, 0,48€</li>
+</ul>
+
+<p>Possible alternatives from <a href="https://www.pollin.de">Pollin</a>:</p>
+
+<ul>
+<li>260252    Temperatursicherung 227°C, 0,45€</li>
+<li>260253    Temperatursicherung 240°C, 0,45€</li>
+</ul>
+
+<h2 id="temperature-profile">Temperature profile</h2>
+
+
+<figure>
+    
+        <img src="https://i.stack.imgur.com/PhUW1.jpg" alt="Kester profile for leaded solder" />
+    
+    
+    <figcaption>
+        <p>
+        Kester profile for leaded solder
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+
+
+<p>A common temperature profil for leaded soldering is based on these
+temperatures and times:</p>
+
+<ol>
+<li>ramp to soak (20°C-&gt;150°C): 1-3K/s (&lt;1.8K/s ideal)</li>
+<li>preheat/soak (150°C): const</li>
+<li>ramp to peak (bis 210°C..225°C): 1-3K/s</li>
+<li>cooling: as fast as possible, open the door</li>
+</ol>
+
+<ul>
+<li>soaking zone: typ. 30..60s, max. 120s</li>
+<li>time to peak temp: typ. 210..300s, max. 330s</li>
+<li>reflow zone (time with T&gt;180°C): typ. 45..75s</li>
+</ul>
+
+<h2 id="software">Software</h2>
+
+<p>From a control point of view the furnace is a PT2 system.  Theoretically,
+therefore, a PID controller the ideal solution.  But due to the large delays
+it turns out that a combined closed- and open loop control algorythmn
+results in a smoother temperture profile.</p>
+
+<p>The temperature profile is divided into phases. The phase transitions are
+partly temperature- and partly time-dependent. An adaptation to the
+respective furnace is therefore necessary.</p>
+
+<h2 id="hardware">Hardware</h2>
+
+<p>For the sake of simplicity I used finished modules instead of designing my
+own PCB. Used components:</p>
+
+<ul>
+<li>Arduino Uno ($3.50)</li>
+<li>LCD keypad shield ($2.50)</li>
+<li>MAX6675 breakout board ($2.20)</li>
+<li>type K thermocouple ($1,00)</li>
+</ul>
+
+<p>The MAX6675 board and the connectors for the sensor and the relay are
+mounted on a breadboard shield in the front housing:</p>
+
+
+<figure>
+    
+        <img src="https://tenbaht.github.io/images/reflow-shield-schematic.png" alt="Reflow-Shield" />
+    
+    
+    <figcaption>
+        <p>
+        Reflow-Shield
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+
+
+<p>The heating elements are switched with a solid-state relay inside the oven
+housing.  In retrospect, a simple relay modules ($0.60) would work just as
+well.  In that case it is possible to source all components for less then
+$10 on <a href="https://www.aliexpress.com">Aliexpress</a>.</p>
+
+<p>The LCD Keypad Shield uses these signals:</p>
+
+<table>
+<thead>
+<tr>
+<th>Arduino pin</th>
+<th>Signal</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>D4</td>
+<td>LCD D4</td>
+</tr>
+
+<tr>
+<td>D5~</td>
+<td>LCD D5</td>
+</tr>
+
+<tr>
+<td>D6~</td>
+<td>LCD D6</td>
+</tr>
+
+<tr>
+<td>D7</td>
+<td>LCD D7</td>
+</tr>
+
+<tr>
+<td>D8</td>
+<td>LCD RS</td>
+</tr>
+
+<tr>
+<td>D9~</td>
+<td>LCD EN</td>
+</tr>
+
+<tr>
+<td>D10~</td>
+<td>LCD Backlight</td>
+</tr>
+
+<tr>
+<td>A0</td>
+<td>Voltage divider connected to the keys</td>
+</tr>
+</tbody>
+</table>
+
+<p>My reflow shield uses these signals:</p>
+
+<table>
+<thead>
+<tr>
+<th>Arduino pin</th>
+<th>Signal</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>D13/SCK</td>
+<td>MAX SCK</td>
+</tr>
+
+<tr>
+<td>D12/MISO</td>
+<td>MAX SO</td>
+</tr>
+
+<tr>
+<td>D2</td>
+<td>MAX CS</td>
+</tr>
+
+<tr>
+<td>A1</td>
+<td>Diode A</td>
+</tr>
+
+<tr>
+<td>D3~</td>
+<td>HEAT_TOP (used for all heaters)</td>
+</tr>
+
+<tr>
+<td>D16</td>
+<td>HEAT_BOTTOM (not used)</td>
+</tr>
+
+<tr>
+<td>D17</td>
+<td>HEAT_LED</td>
+</tr>
+</tbody>
+</table>
+
+<p>Some pins remain unused:</p>
+
+<table>
+<thead>
+<tr>
+<th>Arduino pin</th>
+<th>Signal</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>D11~/MOSI</td>
+<td>NC</td>
+</tr>
+
+<tr>
+<td>D18/A4/SDA</td>
+<td>NC</td>
+</tr>
+
+<tr>
+<td>D19/A5/SCL</td>
+<td>NC</td>
+</tr>
+</tbody>
+</table>
+
+<p>D12 und D13 could be freed by combined use of some LCD pins for the MAX SPI
+signals.</p>
+
+<p>Initializing the LCD: <code>LiquidCrystal lcd(8, 9, 4, 5, 6, 7);</code></p>
+
+<h2 id="bom-and-material-cost">BOM and material cost</h2>
+
+<p>Temperature fuse (needed only for lead free soldering):</p>
+
+<ul>
+<li>Reichelt MTS 240 Temperatursicherung, 10A, 240°C, 0,48€</li>
+<li>Reichelt MTS 228 Temperatursicherung, 10A, 228°C, 0,48€</li>
+<li>Pollin 260252 Temperatursicherung 227°C, 0,45€</li>
+<li>Pollin 260253 Temperatursicherung 240°C, 0,45€</li>
+</ul>
+
+<p>Control electronics (all from aliexpress):</p>
+
+<ul>
+<li>Arduino Uno ($3,50)</li>
+<li>LCD-Keypad-Shield ($2,50)</li>
+<li>MAX6675-Breakout-Board ($2,20)</li>
+<li>Typ-K Thermoelements, 92cm (with yellow plug) ($1,00)</li>
+<li>Solid-State-Relais S202S12 ($2,50) or</li>
+<li>simple relay module for Arduino ($0,60)</li>
+</ul>
+
+<p>Housing:</p>
+
+<ul>
+<li><a href="https://www.pollin.de/p/kunststoffgehaeuse-021-002-173-460006">Pollin 021-002-173</a> von Pollin
+(2,40€)</li>
+</ul>
+
+<p>Total cost is well below 15€.</p>
+
+<h2 id="similar-projekts">Similar projekts</h2>
+
+<h2 id="other-solutions">other solutions</h2>
+
+<h3 id="reflow-laminator-control-board-by-thomas-pfeiffer">reflow/laminator control board by Thomas Pfeiffer</h3>
+
+<p>My solution is based on <a href="http://thomaspfeifer.net/backofen_smd_reflow.htm">Thomas Pfeiffers reflow control
+board</a>.
+Mounting his PCB into the oven housing turned out to be difficult, so I
+came up with the current solution to mount the controller outside the actual
+oven housing. This has the benefit of allowing for a simple user interface
+with an LCD and some buttons.</p>
+
+<p>His software implements a very simple two-point control.  It turned out that
+the thermal delays of my toaster oven were way too long for this approach.
+The delays resulted in temperature fluctuations of more than 50K for the
+soaking phase and a massive overshoot of the final temperature.  This
+approach was clearly not applicable.</p>
+
+<p>His hardware is very simple:</p>
+
+<ul>
+<li>Si diode used as a temperature sensor</li>
+<li>no display</li>
+<li>solid state relay Sharp S202S11</li>
+<li>max. 2 channels, only one is used</li>
+</ul>
+
+<h3 id="controleo2">ControLeo2</h3>
+
+<p><a href="https://github.com/engineertype">Peter Easton</a>
+describes in great detail how to do a perfect oven conversion.
+<a href="http://www.whizoo.com/reflowoven">New and perfectionistic</a> and <a href="http://www.whizoo.com/c2">old, much
+easier</a> version.</p>
+
+<p>Despite his reminders, I didn&rsquo;t coat the interior with
+gold foil and didn&rsquo;t even seal the small housing openings.
+I am planning only on soldering small boards and I am going to use leaded
+solder. This relaxes the requirements and allows for some heat loss. I still
+might add it later.</p>
+
+<p>He published only the
+<a href="https://github.com/engineertype/ControLeo2">Software</a>, but not the
+hardware.  My hardware setup has become quite similar, but is not identical.
+Porting his software wouldn&rsquo;t be complicated - probably not much more than
+adopting the slightly different pin connections.  But doing so would only
+make sense if I would control the upper and lower heater separately.</p>
+
+<p>The software includes a stripped down version of <code>LiquidCrystal</code>: Fixed
+pinout, 4 bit mode only, no support for read access.</p>
+
+<p>His software comes as an Arduino library and the actual applications are in
+the examples folder. There are three main versions available:</p>
+
+<h4 id="reflowoven">ReflowOven</h4>
+
+<p>The first version, most simple.</p>
+
+<ul>
+<li>simple temperature based approach, very similar the the laminator software
+by Thomas Pfeiffer.</li>
+<li>already supports a simple PWM approach based on 8 time slices/segments</li>
+</ul>
+
+<h4 id="reflowoven2">ReflowOven2</h4>
+
+<p>Full rewrite by a third party (not sure who).
+LCD16x2, 2 buttons. Interesting approach.</p>
+
+<ul>
+<li>based on phases, similar to my software</li>
+<li>the data to define the phases is stored in EEPROM (and modifiable)</li>
+<li>supports 3 heater elements (lower, upper, booster)</li>
+<li>the driving patterns for the heater elements are defined by a 8 bit value,
+resulting in 9 different power levels (0 to 8 bits active)</li>
+<li>control clock is 1 Hz (1 bit per second, 8 seconds for the 8 bit pattern)</li>
+<li>the driving patterns are synchonised with each other. This allows for
+control of the peak power consumption of the oven by defining alternating
+driving patterns.</li>
+</ul>
+
+<h4 id="reflowwizard">ReflowWizard</h4>
+
+<p>Self learning, requires no user configuration to adopt the control
+parameters to the used oven. Instead of using a coarse 8 bit pattern the
+duty cycle of the heater elements is defined as a percentage of 0 to 100%.</p>
+
+<ul>
+<li>100 PWM steps, 20 Hz PWM frequency, 5s period duration, 50ms/PWM count</li>
+<li>if one solder phase takes too much time to reach the intended temperature,
+the duty cycle is increased. A litte, much or very much, depending on the
+deviation.</li>
+<li>after REFLOW (max. 90s) follows phase WAITING (40s), before the door is
+opened to cool off. Similar to my phase COASTING.</li>
+<li>uses its own servo library instead of the stock arduino library.</li>
+<li>plays a short melody when done.</li>
+</ul>
+
+<h2 id="temperature-sensor">Temperature sensor</h2>
+
+<p>Thomas Pfeiffer uses a common silicon diode as a temperature sensor.  He
+measures the forward voltage of the diode using an ADC input and converts
+the read value to a temperture value.  This is surprisingly precise as the
+temperature coefficient of a pn-junction is a well-defined physical material
+constant of silicon.</p>
+
+<p>Main advantages:</p>
+
+<ul>
+<li>minimal support hardware (only one resistor and one capacitor need)</li>
+<li>availability</li>
+<li>it doesn&rsquo;t get any cheaper</li>
+</ul>
+
+<p>ControLeo2 uses a thermocouple instead. Main advantages:</p>
+
+<ul>
+<li>no calibration needed, output is an absolute temperature value</li>
+<li>extremly low thermal mass results in very high reaction speed.</li>
+</ul>
+
+<p>For comparison, I implemented both sensors and read them in parallel.  The
+scaling for the diode is a little off, but see what happens when reflowing a
+PCB:</p>
+
+
+<figure>
+    
+        <img src="https://tenbaht.github.io/images/reflow-600.png" alt="Reflow soldering a PCB." />
+    
+    
+    <figcaption>
+        <p>
+        Reflow soldering a PCB.
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+
+
+<p>For static measurements, both provide comparably good results, but for
+rapidly changing temperatures the diode reading lags considerably.</p>
+
+<p>Since I want to measure rapid changes, I decided on using the thermocouple
+as ControLeo2 does.</p>
+
+<h2 id="links-to-background-information">Links to background information</h2>
+
+<p>Accurate Temperature Sensing with an External P-N Junction by delta
+measurement:
+<a href="http://www.analog.com/media/en/technical-documentation/application-notes/an137f.pdf">Linear Technology AN137</a></p>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://tenbaht.github.io/posts/reflow-oven.de/"><i class="fa fa-chevron-circle-left"></i> SMD-Reflow-Ofen vom Sperrmüll</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://tenbaht.github.io/posts/lessons-learned.de/">SMD reflow oven: lessons learned <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2018 - Michael Mayer | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://tenbaht.github.io/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://tenbaht.github.io/js/scripts.js"></script>
+</body>
+
+</html>

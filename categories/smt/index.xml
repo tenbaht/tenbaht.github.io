@@ -1,35 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Embedded notes</title>
-    <link>https://tenbaht.github.io/</link>
-    <description>Recent content on Embedded notes</description>
+    <title>Smt on Embedded notes</title>
+    <link>https://tenbaht.github.io/categories/smt/</link>
+    <description>Recent content in Smt on Embedded notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Michael Mayer</copyright>
-    <lastBuildDate>Fri, 21 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Apr 2018 12:05:00 +0200</lastBuildDate>
     
-	<atom:link href="https://tenbaht.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tenbaht.github.io/categories/smt/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>My projects</title>
-      <link>https://tenbaht.github.io/about/</link>
-      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://tenbaht.github.io/about/</guid>
-      <description>I am a developer for embedded systems. I work on hardware as well as on low-level software.
-My current projects (apart from my one-year old son, which doesn&amp;rsquo;t leave much time for other things right now):</description>
-    </item>
-    
-    <item>
-      <title>Binaries for plotkicadsch</title>
-      <link>https://tenbaht.github.io/posts/binaries-for-plotkicadsch/</link>
-      <pubDate>Fri, 21 Sep 2018 22:29:17 +0200</pubDate>
-      
-      <guid>https://tenbaht.github.io/posts/binaries-for-plotkicadsch/</guid>
-      <description>Compiling plotkicadsch from source is a little bit complicated. To make your life easier I uploaded my compiled binaries here:
- for Mint 19/Ubuntu 18.04, 64 bit  Unpack the file to a convinient location like /usr/local/bin:</description>
-    </item>
     
     <item>
       <title>SMD reflow oven: lessons learned</title>

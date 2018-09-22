@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reflow Oven on Embedded notes</title>
+    <link>https://tenbaht.github.io/tags/reflow-oven/</link>
+    <description>Recent content in Reflow Oven on Embedded notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2018 - Michael Mayer</copyright>
+    <lastBuildDate>Mon, 02 Apr 2018 12:05:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://tenbaht.github.io/tags/reflow-oven/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SMD reflow oven: lessons learned</title>
+      <link>https://tenbaht.github.io/posts/lessons-learned.de/</link>
+      <pubDate>Mon, 02 Apr 2018 12:05:00 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/posts/lessons-learned.de/</guid>
+      <description>(Sorry, no english version yet.)
+Der Ofen funktioniert und tut genau das, was er soll. Gut. Aber der Weg dorthin war länger und umständlicher als er hätte sein müssen.</description>
+    </item>
+    
+    <item>
+      <title>SMD reflow oven from the dumpster</title>
+      <link>https://tenbaht.github.io/posts/reflow-oven/</link>
+      <pubDate>Sun, 01 Apr 2018 00:02:36 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/posts/reflow-oven/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/reflow-800.jpg&#34; alt=&#34;my reflow oven&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A while ago I found a toaster oven in the trash and now I converted it into
+a reflow oven for soldering of SMD circuit boards.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
