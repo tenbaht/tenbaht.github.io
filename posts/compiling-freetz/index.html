@@ -1,0 +1,177 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Embedded notes</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Michael Mayer" />
+  <meta name="generator" content="Hugo 0.40.1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://tenbaht.github.io/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://tenbaht.github.io/">Embedded notes</a>
+            </h1>
+
+      <ul id="social-media">
+          
+        <li><a href="https://github.com/https://github.com/tenbaht"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
+           
+      </ul>
+      
+      <p><em>Quick notes on embedded systems, electronics and CNC</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://tenbaht.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://tenbaht.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>My projects</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>freetz auf einer Fritzbox 3170 installieren</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2018-10-02T22:16:28&#43;02:00">2. October 2018</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://tenbaht.github.io/categories/network/">network</a>
+                
+            </em>
+        </li>
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<p>Meine aktuelle Fritzbox macht Probleme, deshalb will ich die uralte 3170
+zumindest vorübergehend wieder in Betrieb nehmen. Freetz bietet mehr
+Möglichkeiten als die normale Firmware, also mal ausprobieren.</p>
+
+<h2 id="freetz-image-compilieren">freetz-Image compilieren</h2>
+
+<p>Es gibt keine fertigen Images, sondern es muss erst selbst aus den
+svn-Sourcen compiliert werden.  Das build-System von stable-2.0 ist total
+veraltet und lässt sich nur mit gcc bis zur Version 5.x compilieren.
+Besser trunk verwenden, der funktioniert auch mit gcc-7.0.</p>
+
+<p>Mein Basissystem ist Linux Mint 19 (Ubuntu 18.04), 64 Bit. Nötige Pakete
+installieren:</p>
+
+<pre><code># nötige Pakete:
+apt install subversion libtool-bin
+# für trunk zusätzlich noch:
+apt install acl-dev libcap-dev libreadline-dev
+# auf 64-Bit System zusätzlich noch:
+apt install libncurses-dev gcc-multilib libc6-dev-i386
+</code></pre>
+
+<p>System runterladen und konfigurieren:</p>
+
+<pre><code>svn checkout http://svn.freetz.org/trunk
+cd trunk
+make menuconfig
+</code></pre>
+
+<p>Unter &ldquo;Webinterfaces-&gt;AVM Firewall&rdquo; aktivieren.  Speicher ist leider extrem
+knapp und es müssen als Ausgleich ein paar andere Funktionen deaktiviert
+werden.  Ich habe Samba, FTP und Musikserver abgeschaltet, da ich eh&rsquo; keinen
+USB-Stick mit der Box verwenden werde.</p>
+
+<p>System compilieren (dauert ein paar Minuten):</p>
+
+<pre><code>make
+</code></pre>
+
+<p>Fertiges Image findet sich in <code>images/</code>, die zum Bauen verwendete
+Konfiguration in <code>.config</code>. Das Makefile lädt das Original-Firmware-Image
+von der AVM-Seite nach <code>dl/fw/fritz.box_wlan_3170.49.04.58.image</code></p>
+
+<h2 id="flashen">Flashen</h2>
+
+<p>Ganz normal als Firmware-Update.</p>
+
+<h2 id="einrichten">Einrichten</h2>
+
+<p>Telnet-Server aktivieren, einloggen (root/freetz), dann Sicherheitsstufe auf
+0 (unbeschränkt) setzen:</p>
+
+<pre><code>echo 0 &gt; /tmp/flash/mod/security
+modsave
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://tenbaht.github.io/posts/binaries-for-plotkicadsch/"><i class="fa fa-chevron-circle-left"></i> Binaries for plotkicadsch</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2018 - Michael Mayer | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://tenbaht.github.io/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://tenbaht.github.io/js/scripts.js"></script>
+</body>
+
+</html>
