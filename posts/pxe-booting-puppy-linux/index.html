@@ -58,13 +58,13 @@
 
 <article>
 
-    <h1>freetz auf einer Fritzbox 3170 installieren</h1>
+    <h1>PXE Booting Puppy Linux</h1>
 
     
         <aside>
     <ul>
         <li>
-            <time class="post-date" datetime="2018-10-02T22:16:28&#43;02:00">2. October 2018</time>
+            <time class="post-date" datetime="2018-10-19T19:18:05&#43;02:00">19. October 2018</time>
         </li>
         
         
@@ -80,6 +80,15 @@
         
 
         
+        <li>
+            <em>
+                
+                    
+                    <a href="https://tenbaht.github.io/tags/pxe/">#PXE</a>
+                
+            </em>
+        </li>
+        
 
         <li>1 min read</li>
     </ul>
@@ -88,62 +97,61 @@
 
     
 
-<p>Meine aktuelle Fritzbox macht Probleme, deshalb will ich die uralte 3170
-zumindest vorübergehend wieder in Betrieb nehmen. Freetz bietet mehr
-Möglichkeiten als die normale Firmware, also mal ausprobieren.</p>
+<p>PXE booting Puppy Linux is actually quite easy if you already have a PXE
+server up and running. The idea is simple: Add the <code>*.sfs</code> file containing
+the file system into the initrd and use this for booting.</p>
 
-<h2 id="freetz-image-compilieren">freetz-Image compilieren</h2>
+<p>This post assumes your tftpserver is already set up
+and serves files from <code>/opt/tftpboot</code>.</p>
 
-<p>Es gibt keine fertigen Images, sondern es muss erst selbst aus den
-svn-Sourcen compiliert werden.  Das build-System von stable-2.0 ist total
-veraltet und lässt sich nur mit gcc bis zur Version 5.x compilieren.
-Besser trunk verwenden, der funktioniert auch mit gcc-7.0.</p>
+<p>The description at [PXE-Netbooting using Puppy
+Linux]<a href="https://docs.google.com/document/d/1bkMJ-2wjAAC8HVZZTZBFxBELbojoGctLMg27KazqvRw/edit?hl=en&amp;pli=1#">https://docs.google.com/document/d/1bkMJ-2wjAAC8HVZZTZBFxBELbojoGctLMg27KazqvRw/edit?hl=en&amp;pli=1#</a>
+tells you in detail what to do to get it working using a Puppy Linux Server
+Host. But it does not list the (few and simple) steps needed to get it
+running on an existing PXE server.</p>
 
-<p>Mein Basissystem ist Linux Mint 19 (Ubuntu 18.04), 64 Bit. Nötige Pakete
-installieren:</p>
+<p>Mount the iso image (do all these steps as root):</p>
 
-<pre><code># nötige Pakete:
-apt install subversion libtool-bin
-# für trunk zusätzlich noch:
-apt install acl-dev libcap-dev libreadline-dev
-# auf 64-Bit System zusätzlich noch:
-apt install libncurses-dev gcc-multilib libc6-dev-i386
+<pre><code>mount puppy.iso /mnt
 </code></pre>
 
-<p>System runterladen und konfigurieren:</p>
+<p>Copy the kernel into your tftp directory:</p>
 
-<pre><code>svn checkout http://svn.freetz.org/trunk
-cd trunk
-umask 0022
-make menuconfig
+<pre><code>mkdir /opt/tftpboot/puppy
+cp -av /mnt/vmlinuz /opt/tftpboot/puppy
 </code></pre>
 
-<p>Unter &ldquo;Webinterfaces-&gt;AVM Firewall&rdquo; aktivieren.  Speicher ist leider extrem
-knapp und es müssen als Ausgleich ein paar andere Funktionen deaktiviert
-werden.  Ich habe Samba, FTP und Musikserver abgeschaltet, da ich eh&rsquo; keinen
-USB-Stick mit der Box verwenden werde.</p>
+<p>Unpack the initrd (as root):</p>
 
-<p>System compilieren (dauert ein paar Minuten):</p>
-
-<pre><code>make
+<pre><code>mkdir /tmp/x
+cd /tmp/x
+zcat /mnt/initrd.gz | cpio -i
 </code></pre>
 
-<p>Fertiges Image findet sich in <code>images/</code>, die zum Bauen verwendete
-Konfiguration in <code>.config</code>. Das Makefile lädt das Original-Firmware-Image
-von der AVM-Seite nach <code>dl/fw/fritz.box_wlan_3170.49.04.58.image</code></p>
+<p>Add the <code>*.sfs</code> file from the iso and repack the initrd:</p>
 
-<h2 id="flashen">Flashen</h2>
-
-<p>Ganz normal als Firmware-Update.</p>
-
-<h2 id="einrichten">Einrichten</h2>
-
-<p>Telnet-Server aktivieren, einloggen (root/freetz), dann Sicherheitsstufe auf
-0 (unbeschränkt) setzen:</p>
-
-<pre><code>echo 0 &gt; /tmp/flash/mod/security
-modsave
+<pre><code>cp -av /mnt/*.sfs .
+find . | cpio -o -H newc | gzip -9 &gt; /opt/tftpboot/puppy/initrd.gz
 </code></pre>
+
+<p>Add this to your /opt/tftpboot/pxeboot.cfg/default:</p>
+
+<pre><code># Puppy Linux
+LABEL puppy
+MENU LABEL PuppyLinux
+KERNEL /puppy/vmlinuz
+APPEND initrd=/puppy/initrd.gz
+</code></pre>
+
+<p>Done!</p>
+
+<h2 id="links">Links</h2>
+
+<ul>
+<li><a href="http://www.murga-linux.com/puppy/viewtopic.php?mode=attach&amp;id=37112">netboot script PET</a>
+that contains the original mknetboot.sh script.</li>
+<li>[PXE-Netbooting using Puppy Linux]<a href="https://docs.google.com/document/d/1bkMJ-2wjAAC8HVZZTZBFxBELbojoGctLMg27KazqvRw/edit?hl=en&amp;pli=1#">https://docs.google.com/document/d/1bkMJ-2wjAAC8HVZZTZBFxBELbojoGctLMg27KazqvRw/edit?hl=en&amp;pli=1#</a></li>
+</ul>
 
 
 </article>
@@ -153,13 +161,9 @@ modsave
     <ul>
         
         <li>
-            <a href="https://tenbaht.github.io/posts/binaries-for-plotkicadsch/"><i class="fa fa-chevron-circle-left"></i> Binaries for plotkicadsch</a>
+            <a href="https://tenbaht.github.io/posts/compiling-freetz/"><i class="fa fa-chevron-circle-left"></i> freetz auf einer Fritzbox 3170 installieren</a>
         </li>
         
-        
-        <li>
-            <a href="https://tenbaht.github.io/posts/pxe-booting-puppy-linux/">PXE Booting Puppy Linux <i class="fa fa-chevron-circle-right"></i> </a>
-        </li>
         
     </ul>
 </section>

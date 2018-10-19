@@ -22,6 +22,15 @@ My current projects (apart from my one-year old son, which doesn&amp;rsquo;t lea
     </item>
     
     <item>
+      <title>PXE Booting Puppy Linux</title>
+      <link>https://tenbaht.github.io/posts/pxe-booting-puppy-linux/</link>
+      <pubDate>Fri, 19 Oct 2018 19:18:05 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/posts/pxe-booting-puppy-linux/</guid>
+      <description>PXE booting Puppy Linux is actually quite easy if you already have a PXE server up and running. The idea is simple: Add the *.sfs file containing the file system into the initrd and use this for booting.</description>
+    </item>
+    
+    <item>
       <title>freetz auf einer Fritzbox 3170 installieren</title>
       <link>https://tenbaht.github.io/posts/compiling-freetz/</link>
       <pubDate>Tue, 02 Oct 2018 22:16:28 +0200</pubDate>
