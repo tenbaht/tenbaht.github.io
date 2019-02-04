@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Avr on Embedded notes</title>
+    <link>https://tenbaht.github.io/categories/avr/</link>
+    <description>Recent content in Avr on Embedded notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2018-2019 - Michael Mayer</copyright>
+    <lastBuildDate>Mon, 04 Feb 2019 15:02:26 +0100</lastBuildDate>
+    
+	<atom:link href="https://tenbaht.github.io/categories/avr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Migrating from avra to avr-as</title>
+      <link>https://tenbaht.github.io/posts/migrating-from-avra-to-avr-as/</link>
+      <pubDate>Mon, 04 Feb 2019 15:02:26 +0100</pubDate>
+      
+      <guid>https://tenbaht.github.io/posts/migrating-from-avra-to-avr-as/</guid>
+      <description>&lt;figure&gt;
+    
+        &lt;img src=&#34;https://tenbaht.github.io/images/migrating-avra-title.png&#34; alt=&#34;assemble avra projects with avr-as&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        assemble avra projects with avr-as
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;The main advantage of avr-as over avra is the possibility to generate
+linkable .o object files that can be mixed with C files.&lt;/p&gt;
+
+&lt;p&gt;Unfortunatly, the syntax differs slightly between these two assemblers. And
+it turns out that the syntax differences are big enough to make the
+conversion of existing source code a non-trivial task that tends to take way
+longer than expected.&lt;/p&gt;
+
+&lt;p&gt;To save others some troubles in similar situations, here are my findings
+about &lt;a href=&#34;https://github.com/tenbaht/servo-motor-controller&#34;&gt;porting the SMC3&lt;/a&gt;
+project from avra to avr-as/gas.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

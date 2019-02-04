@@ -5,7 +5,7 @@
     <link>https://tenbaht.github.io/</link>
     <description>Recent content on Embedded notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2018 - Michael Mayer</copyright>
+    <copyright>Copyright &amp;copy; 2018-2019 - Michael Mayer</copyright>
     <lastBuildDate>Fri, 21 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://tenbaht.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,45 @@
       
       <guid>https://tenbaht.github.io/about/</guid>
       <description>I am a developer for embedded systems. I work on hardware as well as on low-level software.
-My current projects (apart from my one-year old son, which doesn&amp;rsquo;t leave much time for other things right now):</description>
+My current projects (apart from our one-and-a-half year old, which doesn&amp;rsquo;t leave much time for other things right now):</description>
+    </item>
+    
+    <item>
+      <title>Migrating from avra to avr-as</title>
+      <link>https://tenbaht.github.io/posts/migrating-from-avra-to-avr-as/</link>
+      <pubDate>Mon, 04 Feb 2019 15:02:26 +0100</pubDate>
+      
+      <guid>https://tenbaht.github.io/posts/migrating-from-avra-to-avr-as/</guid>
+      <description>&lt;figure&gt;
+    
+        &lt;img src=&#34;https://tenbaht.github.io/images/migrating-avra-title.png&#34; alt=&#34;assemble avra projects with avr-as&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        assemble avra projects with avr-as
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;The main advantage of avr-as over avra is the possibility to generate
+linkable .o object files that can be mixed with C files.&lt;/p&gt;
+
+&lt;p&gt;Unfortunatly, the syntax differs slightly between these two assemblers. And
+it turns out that the syntax differences are big enough to make the
+conversion of existing source code a non-trivial task that tends to take way
+longer than expected.&lt;/p&gt;
+
+&lt;p&gt;To save others some troubles in similar situations, here are my findings
+about &lt;a href=&#34;https://github.com/tenbaht/servo-motor-controller&#34;&gt;porting the SMC3&lt;/a&gt;
+project from avra to avr-as/gas.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
