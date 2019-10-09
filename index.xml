@@ -22,6 +22,27 @@ My current projects (apart from our one-and-a-half year old, which doesn&amp;rsq
     </item>
     
     <item>
+      <title>Converting an Existing Linux Installation to UEFI Boot</title>
+      <link>https://tenbaht.github.io/posts/converting-an-existing-linux-installation-to-uefi-boot/</link>
+      <pubDate>Wed, 09 Oct 2019 13:54:54 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/posts/converting-an-existing-linux-installation-to-uefi-boot/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/efiboot.png&#34; alt=&#34;Converting an Existing Linux Installation to UEFI Boot&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Due to a hardware failure I had to move my Linux installation to a new
+Laptop that was configured for UEFI boot instead of the conventional BIOS
+boot.&lt;/p&gt;
+
+&lt;p&gt;Transfering the partition data from the old to the new laptop is
+straight forward. The problem is: How to add the existing installation to
+the UEFI boot menu?&lt;/p&gt;
+
+&lt;p&gt;As it turns out, this task is way easier than expected.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Migrating from avra to avr-as</title>
       <link>https://tenbaht.github.io/posts/migrating-from-avra-to-avr-as/</link>
       <pubDate>Mon, 04 Feb 2019 15:02:26 +0100</pubDate>

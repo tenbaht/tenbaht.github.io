@@ -1,0 +1,185 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Embedded notes</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Michael Mayer" />
+  <meta name="generator" content="Hugo 0.40.1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://tenbaht.github.io/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://tenbaht.github.io/">Embedded notes</a>
+            </h1>
+
+      <ul id="social-media">
+          
+        <li><a href="https://github.com/https://github.com/tenbaht"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
+           
+      </ul>
+      
+      <p><em>Quick notes on embedded systems, electronics and CNC</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://tenbaht.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://tenbaht.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>My projects</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Converting an Existing Linux Installation to UEFI Boot</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-10-09T13:54:54&#43;02:00">9. October 2019</time>
+        </li>
+        
+        
+
+        
+
+        <li>0 min read</li>
+    </ul>
+</aside>
+    
+
+    <p><img src="https://tenbaht.github.io/images/efiboot.png" alt="Converting an Existing Linux Installation to UEFI Boot" /></p>
+
+<p>Due to a hardware failure I had to move my Linux installation to a new
+Laptop that was configured for UEFI boot instead of the conventional BIOS
+boot.</p>
+
+<p>Transfering the partition data from the old to the new laptop is
+straight forward. The problem is: How to add the existing installation to
+the UEFI boot menu?</p>
+
+<p>As it turns out, this task is way easier than expected.</p>
+
+<p></p>
+
+<h3 id="boot-into-uefi-mode">Boot into UEFI mode</h3>
+
+<p>Boot the new laptop in <strong>UEFI mode</strong> using a current installation or rescue
+media. I used the Mint19 installation media.</p>
+
+<p>Check, if it&rsquo;s really in UEFI mode. This should now and list the
+pre-existing boot loader (most likely: Windows)</p>
+
+<pre><code>efibootmgr -v
+</code></pre>
+
+<h3 id="chroot-into-the-new-system">chroot into the new system</h3>
+
+<p>Mount the root-partition-to-be to /mnt and bind the dynamic system
+directories:</p>
+
+<pre><code>mount /dev/mapper/root /mnt
+cd /mnt
+cp /etc/resolv.conf etc     # only needed if using NetworkManager
+mount --bind /dev/ dev
+mount --bind /dev/pts/ dev/pts
+mount --bind /proc/ proc
+mount --bind /sys/ sys
+</code></pre>
+
+<p>Since I normally use the NetworkManager to dynamically generate the
+resolv.conf I had to copy it by hand this time.</p>
+
+<p>Now chroot into the installed system, leaving the live system behind:</p>
+
+<pre><code>chroot /mnt
+</code></pre>
+
+<h3 id="install-grub-on-the-efi-partition">Install grub on the EFI partition</h3>
+
+<p>Make the EFI partion accessable from the freshly transfered installation:</p>
+
+<pre><code># mount point
+mkdir /boot/efi
+# add entry for the EFI partition to /etc/fstab
+
+# mount all filesystems
+mount -a
+</code></pre>
+
+<p>Now everything should work as usual and it is time to install grub into the
+EFI partition.</p>
+
+<pre><code>apt install grub-efi
+grub-install
+</code></pre>
+
+<p>Done! The UEFI boot menu contains two entries now, with grub beeing the
+first one in the boot order list:</p>
+
+<pre><code>$ efibootmgr -v
+BootCurrent: 0003
+Timeout: 1 seconds
+BootOrder: 0003,0000
+Boot0000* Windows Boot Manager  HD(2,GPT,1774d14a-7d6c-49d3-a41c-94d911817e60,0x109000,0x31800)/File(\EFI\MICROSOFT\BOOT\BOOTMGFW.EFI)WINDOWS.........x...B.C.D.O.B.J.E.C.T.=.{.9.d.e.a.8.6.2.c.-.5.c.d.d.-.4.e.7.0.-.a.c.c.1.-.f.3.2.b.3.4.4.d.4.7.9.5.}....................
+Boot0003* ubuntu    HD(2,GPT,1774d14a-7d6c-49d3-a41c-94d911817e60,0x109000,0x31800)/File(\EFI\ubuntu\grubx64.efi)
+</code></pre>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://tenbaht.github.io/posts/migrating-from-avra-to-avr-as/"><i class="fa fa-chevron-circle-left"></i> Migrating from avra to avr-as</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2018-2019 - Michael Mayer | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://tenbaht.github.io/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://tenbaht.github.io/js/scripts.js"></script>
+</body>
+
+</html>

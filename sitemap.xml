@@ -4,12 +4,17 @@
   
   <url>
     <loc>https://tenbaht.github.io/posts/</loc>
-    <lastmod>2019-02-04T15:02:26+01:00</lastmod>
+    <lastmod>2019-10-09T13:54:54+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://tenbaht.github.io/about/</loc>
     <lastmod>2018-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tenbaht.github.io/posts/converting-an-existing-linux-installation-to-uefi-boot/</loc>
+    <lastmod>2019-10-09T13:54:54+02:00</lastmod>
   </url>
   
   <url>
