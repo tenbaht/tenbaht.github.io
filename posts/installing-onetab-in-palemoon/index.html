@@ -1,0 +1,211 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Embedded notes</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Michael Mayer" />
+  <meta name="generator" content="Hugo 0.40.1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://tenbaht.github.io/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://tenbaht.github.io/">Embedded notes</a>
+            </h1>
+
+      <ul id="social-media">
+          
+        <li><a href="https://github.com/https://github.com/tenbaht"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
+           
+      </ul>
+      
+      <p><em>Quick notes on embedded systems, electronics and CNC</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://tenbaht.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://tenbaht.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>My projects</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Installing Onetab in Palemoon</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-07-24T14:18:20&#43;02:00">24. July 2020</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://tenbaht.github.io/categories/network/">network</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://tenbaht.github.io/tags/www/">#www</a>
+                
+            </em>
+        </li>
+        
+
+        <li>0 min read</li>
+    </ul>
+</aside>
+    
+
+    <p><img src="https://tenbaht.github.io/images/titelbild.jpg" alt="Installing Onetab in Palemoon" />
+
+<figure>
+    
+        <img src="https://tenbaht.github.io/images/installing-onetab-in-palemoon.png" alt="Onetab 1.9 running with palemoon 28.9.0.2" />
+    
+    
+    <figcaption>
+        <p>
+        Onetab 1.9 running with palemoon 28.9.0.2
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+</p>
+
+<p>The amazing and absolutely essential onetab extension is only available for
+firefox and chrome, not for the stripped-down firefox version palemoon. But
+with the help of archive.org and a text editor it is possible to install an
+older (but fully functional) version. A pre-patched add-on file is included
+in this posting.
+</p>
+
+<p>Palemoon still uses the old xpi file format for add-ons. It never did the
+switch to the crx format that chrome and more versions of firefox use. But
+it is very easy to patch an old xpi file for use with palemoon.</p>
+
+<h2 id="pre-patched-files">Pre-patched files</h2>
+
+<p>If you trust me enough just click here to install this pre-patched version
+of the 1.9 files:
+<a href="static/uploads/palemoon-onetab-1.9.xpi">Patched version 1.9 for palemoon</a></p>
+
+<p>And for reference the original xpi file as from archive.org/mozilla.org:
+<a href="static/uploads/onetab-1.9-fx.xpi">Original version 1.9 for firefox</a></p>
+
+<h2 id="patching-the-add-on-archive">Patching the add-on archive</h2>
+
+<p>If you are afraid of unauthorized modifications in my version here is how to
+patch it yourself.</p>
+
+<p>The older versions of onetab in the xpi format are still available at
+<a href="https://web.archive.org/web/20150922055958/https://addons.mozilla.org/en-US/firefox/addon/onetab/versions/">archive.org</a>.</p>
+
+<p>Right click on the <a href="https://web.archive.org/web/20150922055958/https://addons.mozilla.org/firefox/downloads/file/267884/onetab-1.9-fx.xpi?src=version-history">add to firefox</a>
+button to save the xpi file.</p>
+
+<p>unzip the downloaded file in an empty directory:</p>
+
+<pre><code>mkdir onetab
+cd onetab
+unzip ~/Downloads/onetab-1.9-fx.xpi
+</code></pre>
+
+<p>Edit install.rdf by replacing the firefox id ec8030f7-c20a-464f-9b0e-13a3a9e97384
+with the palemoon id 8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4:</p>
+
+<pre><code>sed -i s/ec8030f7-c20a-464f-9b0e-13a3a9e97384/8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4/ install.rdf
+</code></pre>
+
+<p>The result should read like this:</p>
+
+<pre><code>&lt;em:targetApplication&gt;
+  &lt;Description&gt;
+    &lt;em:id&gt;{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}&lt;/em:id&gt;
+    &lt;em:minVersion&gt;21.0&lt;/em:minVersion&gt;
+    &lt;em:maxVersion&gt;29.0a1&lt;/em:maxVersion&gt;
+  &lt;/Description&gt;
+&lt;/em:targetApplication&gt;
+</code></pre>
+
+<p>repack the xpi file:</p>
+
+<pre><code>zip -r ../palemoon-onetab-1.9.xpi .
+</code></pre>
+
+<p>Now open this file in palemoon to install the addon:</p>
+
+<pre><code>palemoon ../palemoon-onetab-1.9.xpi
+</code></pre>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://tenbaht.github.io/posts/converting-an-existing-linux-installation-to-uefi-boot/"><i class="fa fa-chevron-circle-left"></i> Converting an Existing Linux Installation to UEFI Boot</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2018-2019 - Michael Mayer | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://tenbaht.github.io/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://tenbaht.github.io/js/scripts.js"></script>
+</body>
+
+</html>

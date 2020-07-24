@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Network on Embedded notes</title>
-    <link>https://tenbaht.github.io/categories/network/</link>
-    <description>Recent content in Network on Embedded notes</description>
+    <title>Www on Embedded notes</title>
+    <link>https://tenbaht.github.io/tags/www/</link>
+    <description>Recent content in Www on Embedded notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018-2019 - Michael Mayer</copyright>
     <lastBuildDate>Fri, 24 Jul 2020 14:18:20 +0200</lastBuildDate>
     
-	<atom:link href="https://tenbaht.github.io/categories/network/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tenbaht.github.io/tags/www/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -42,25 +42,6 @@ with the help of archive.org and a text editor it is possible to install an
 older (but fully functional) version. A pre-patched add-on file is included
 in this posting.
 &lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>PXE Booting Puppy Linux</title>
-      <link>https://tenbaht.github.io/posts/pxe-booting-puppy-linux/</link>
-      <pubDate>Fri, 19 Oct 2018 19:18:05 +0200</pubDate>
-      
-      <guid>https://tenbaht.github.io/posts/pxe-booting-puppy-linux/</guid>
-      <description>PXE booting Puppy Linux is actually quite easy if you already have a PXE server up and running. The idea is simple: Add the *.sfs file containing the file system into the initrd and use this for booting.</description>
-    </item>
-    
-    <item>
-      <title>freetz auf einer Fritzbox 3170 installieren</title>
-      <link>https://tenbaht.github.io/posts/compiling-freetz/</link>
-      <pubDate>Tue, 02 Oct 2018 22:16:28 +0200</pubDate>
-      
-      <guid>https://tenbaht.github.io/posts/compiling-freetz/</guid>
-      <description>Meine aktuelle Fritzbox macht Probleme, deshalb will ich die uralte 3170 zumindest vorübergehend wieder in Betrieb nehmen. Freetz bietet mehr Möglichkeiten als die normale Firmware, also mal ausprobieren.
-freetz-Image compilieren Es gibt keine fertigen Images, sondern es muss erst selbst aus den svn-Sourcen compiliert werden.</description>
     </item>
     
   </channel>

@@ -22,6 +22,39 @@ My current projects (apart from our one-and-a-half year old, which doesn&amp;rsq
     </item>
     
     <item>
+      <title>Installing Onetab in Palemoon</title>
+      <link>https://tenbaht.github.io/posts/installing-onetab-in-palemoon/</link>
+      <pubDate>Fri, 24 Jul 2020 14:18:20 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/posts/installing-onetab-in-palemoon/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/titelbild.jpg&#34; alt=&#34;Installing Onetab in Palemoon&#34; /&gt;
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://tenbaht.github.io/images/installing-onetab-in-palemoon.png&#34; alt=&#34;Onetab 1.9 running with palemoon 28.9.0.2&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        Onetab 1.9 running with palemoon 28.9.0.2
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The amazing and absolutely essential onetab extension is only available for
+firefox and chrome, not for the stripped-down firefox version palemoon. But
+with the help of archive.org and a text editor it is possible to install an
+older (but fully functional) version. A pre-patched add-on file is included
+in this posting.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Converting an Existing Linux Installation to UEFI Boot</title>
       <link>https://tenbaht.github.io/posts/converting-an-existing-linux-installation-to-uefi-boot/</link>
       <pubDate>Wed, 09 Oct 2019 13:54:54 +0200</pubDate>
