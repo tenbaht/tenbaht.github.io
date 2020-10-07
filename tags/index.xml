@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Embedded notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018-2020 - Michael Mayer</copyright>
-    <lastBuildDate>Fri, 24 Jul 2020 14:18:20 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2020 10:47:40 +0200</lastBuildDate>
     
 	<atom:link href="https://tenbaht.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>container</title>
+      <link>https://tenbaht.github.io/tags/container/</link>
+      <pubDate>Wed, 07 Oct 2020 10:47:40 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/tags/container/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gcode</title>
+      <link>https://tenbaht.github.io/tags/gcode/</link>
+      <pubDate>Wed, 07 Oct 2020 10:47:40 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/tags/gcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>grblControl</title>
+      <link>https://tenbaht.github.io/tags/grblcontrol/</link>
+      <pubDate>Wed, 07 Oct 2020 10:47:40 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/tags/grblcontrol/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>www</title>
@@ -17,6 +44,15 @@
       <pubDate>Fri, 24 Jul 2020 14:18:20 +0200</pubDate>
       
       <guid>https://tenbaht.github.io/tags/www/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://tenbaht.github.io/tags/linux/</link>
+      <pubDate>Wed, 09 Oct 2019 13:54:54 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
@@ -39,11 +75,11 @@
     </item>
     
     <item>
-      <title>electronic</title>
-      <link>https://tenbaht.github.io/tags/electronic/</link>
+      <title>PCB</title>
+      <link>https://tenbaht.github.io/tags/pcb/</link>
       <pubDate>Mon, 02 Apr 2018 12:05:00 +0200</pubDate>
       
-      <guid>https://tenbaht.github.io/tags/electronic/</guid>
+      <guid>https://tenbaht.github.io/tags/pcb/</guid>
       <description></description>
     </item>
     
@@ -57,20 +93,20 @@
     </item>
     
     <item>
-      <title>PCB</title>
-      <link>https://tenbaht.github.io/tags/pcb/</link>
-      <pubDate>Sun, 01 Apr 2018 00:02:36 +0200</pubDate>
+      <title>SMT</title>
+      <link>https://tenbaht.github.io/tags/smt/</link>
+      <pubDate>Mon, 02 Apr 2018 12:05:00 +0200</pubDate>
       
-      <guid>https://tenbaht.github.io/tags/pcb/</guid>
+      <guid>https://tenbaht.github.io/tags/smt/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>SMT</title>
-      <link>https://tenbaht.github.io/tags/smt/</link>
+      <title>electronic</title>
+      <link>https://tenbaht.github.io/tags/electronic/</link>
       <pubDate>Sun, 01 Apr 2018 00:02:36 +0200</pubDate>
       
-      <guid>https://tenbaht.github.io/tags/smt/</guid>
+      <guid>https://tenbaht.github.io/tags/electronic/</guid>
       <description></description>
     </item>
     

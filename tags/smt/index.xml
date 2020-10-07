@@ -6,10 +6,21 @@
     <description>Recent content in SMT on Embedded notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018-2020 - Michael Mayer</copyright>
-    <lastBuildDate>Sun, 01 Apr 2018 00:02:36 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 02 Apr 2018 12:05:00 +0200</lastBuildDate>
     
 	<atom:link href="https://tenbaht.github.io/tags/smt/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SMD reflow oven: lessons learned</title>
+      <link>https://tenbaht.github.io/posts/lessons-learned.de/</link>
+      <pubDate>Mon, 02 Apr 2018 12:05:00 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/posts/lessons-learned.de/</guid>
+      <description>(Sorry, no english version yet.)
+Der Ofen funktioniert und tut genau das, was er soll. Gut. Aber der Weg dorthin war länger und umständlicher als er hätte sein müssen.
+Was ich heute anders machen würde Immer eine eigene Platine Am Ende sehe ich mich wieder bestätigt: Niemals ohne richtige Platine.</description>
+    </item>
     
     <item>
       <title>SMD reflow oven from the dumpster</title>

@@ -6,10 +6,28 @@
     <description>Recent content in Categories on Embedded notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018-2020 - Michael Mayer</copyright>
-    <lastBuildDate>Fri, 24 Jul 2020 14:18:20 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2020 10:47:40 +0200</lastBuildDate>
     
 	<atom:link href="https://tenbaht.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>cnc</title>
+      <link>https://tenbaht.github.io/categories/cnc/</link>
+      <pubDate>Wed, 07 Oct 2020 10:47:40 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/categories/cnc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software</title>
+      <link>https://tenbaht.github.io/categories/software/</link>
+      <pubDate>Wed, 07 Oct 2020 10:47:40 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/categories/software/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>network</title>
@@ -17,6 +35,15 @@
       <pubDate>Fri, 24 Jul 2020 14:18:20 +0200</pubDate>
       
       <guid>https://tenbaht.github.io/categories/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>system administration</title>
+      <link>https://tenbaht.github.io/categories/system-administration/</link>
+      <pubDate>Wed, 09 Oct 2019 13:54:54 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/categories/system-administration/</guid>
       <description></description>
     </item>
     
@@ -39,15 +66,6 @@
     </item>
     
     <item>
-      <title>electronic</title>
-      <link>https://tenbaht.github.io/categories/electronic/</link>
-      <pubDate>Fri, 21 Sep 2018 22:29:17 +0200</pubDate>
-      
-      <guid>https://tenbaht.github.io/categories/electronic/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>electronics</title>
       <link>https://tenbaht.github.io/categories/electronics/</link>
       <pubDate>Fri, 21 Sep 2018 22:29:17 +0200</pubDate>
@@ -57,9 +75,18 @@
     </item>
     
     <item>
+      <title>tools</title>
+      <link>https://tenbaht.github.io/categories/tools/</link>
+      <pubDate>Mon, 02 Apr 2018 12:05:00 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/categories/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>PCB</title>
       <link>https://tenbaht.github.io/categories/pcb/</link>
-      <pubDate>Mon, 02 Apr 2018 12:05:00 +0200</pubDate>
+      <pubDate>Sun, 01 Apr 2018 00:02:36 +0200</pubDate>
       
       <guid>https://tenbaht.github.io/categories/pcb/</guid>
       <description></description>
@@ -68,18 +95,9 @@
     <item>
       <title>SMT</title>
       <link>https://tenbaht.github.io/categories/smt/</link>
-      <pubDate>Mon, 02 Apr 2018 12:05:00 +0200</pubDate>
-      
-      <guid>https://tenbaht.github.io/categories/smt/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tools</title>
-      <link>https://tenbaht.github.io/categories/tools/</link>
       <pubDate>Sun, 01 Apr 2018 00:02:36 +0200</pubDate>
       
-      <guid>https://tenbaht.github.io/categories/tools/</guid>
+      <guid>https://tenbaht.github.io/categories/smt/</guid>
       <description></description>
     </item>
     

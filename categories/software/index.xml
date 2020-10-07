@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>software on Embedded notes</title>
+    <link>https://tenbaht.github.io/categories/software/</link>
+    <description>Recent content in software on Embedded notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2018-2020 - Michael Mayer</copyright>
+    <lastBuildDate>Wed, 07 Oct 2020 10:47:40 +0200</lastBuildDate>
+    
+	<atom:link href="https://tenbaht.github.io/categories/software/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Compiling GrblControl in a Container</title>
+      <link>https://tenbaht.github.io/posts/compiling-grblcontrol-in-a-container/</link>
+      <pubDate>Wed, 07 Oct 2020 10:47:40 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/posts/compiling-grblcontrol-in-a-container/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/compiling-candle.png&#34; alt=&#34;Compiling GrblControl in a Container&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Using a container for a build environment can help to avoid cluttering up
+the filesystem of the local machine. This approach can be useful for
+one-time builds with lots of build dependencies which are not used for any
+other work.&lt;/p&gt;
+&lt;p&gt;Since there is no precompiled 64 bit binary for
+&lt;a href=&#34;https://github.com/Denvi/Candle&#34;&gt;Candle&lt;/a&gt; (formerly known as grblControl) I
+had to compile it myself. But since I never use the QT libraries otherwise
+it would pull in more than 600MB of libraries and header files which I would
+have to clean up afterwards in order to keep my system as lean as possible.&lt;/p&gt;
+&lt;p&gt;A perfect opportunity to find out why containers might be useful!
+I am using podman-rootless, but plain old docker would work exactly the same
+way. Just replace &lt;code&gt;podman&lt;/code&gt; with &lt;code&gt;docker&lt;/code&gt; in the following commands.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Converting an Existing Linux Installation to UEFI Boot</title>
+      <link>https://tenbaht.github.io/posts/converting-an-existing-linux-installation-to-uefi-boot/</link>
+      <pubDate>Wed, 09 Oct 2019 13:54:54 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/posts/converting-an-existing-linux-installation-to-uefi-boot/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/efiboot.png&#34; alt=&#34;Converting an Existing Linux Installation to UEFI Boot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Due to a hardware failure I had to move my Linux installation to a new
+Laptop that was configured for UEFI boot instead of the conventional BIOS
+boot.&lt;/p&gt;
+&lt;p&gt;Transfering the partition data from the old to the new laptop is
+straight forward. The problem is: How to add the existing installation to
+the UEFI boot menu?&lt;/p&gt;
+&lt;p&gt;As it turns out, this task is way easier than expected.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

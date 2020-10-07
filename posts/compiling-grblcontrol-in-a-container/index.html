@@ -1,0 +1,207 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Embedded notes</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Michael Mayer" />
+  <meta name="generator" content="Hugo 0.68.3" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://tenbaht.github.io/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://tenbaht.github.io/">Embedded notes</a>
+            </h1>
+
+      <ul id="social-media">
+          
+        <li><a href="https://github.com/https://github.com/tenbaht"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
+           
+      </ul>
+      
+      <p><em>Quick notes on embedded systems, electronics and CNC</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://tenbaht.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://tenbaht.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>My projects</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Compiling GrblControl in a Container</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-10-07T10:47:40&#43;02:00">7. October 2020</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://tenbaht.github.io/categories/software/">software</a>
+                
+                    , 
+                    <a href="https://tenbaht.github.io/categories/cnc/">cnc</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://tenbaht.github.io/tags/grblcontrol/">#grblControl</a>
+                
+                    , 
+                    <a href="https://tenbaht.github.io/tags/gcode/">#gcode</a>
+                
+                    , 
+                    <a href="https://tenbaht.github.io/tags/container/">#container</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p><img src="https://tenbaht.github.io/images/compiling-candle.png" alt="Compiling GrblControl in a Container"></p>
+<p>Using a container for a build environment can help to avoid cluttering up
+the filesystem of the local machine. This approach can be useful for
+one-time builds with lots of build dependencies which are not used for any
+other work.</p>
+<p>Since there is no precompiled 64 bit binary for
+<a href="https://github.com/Denvi/Candle">Candle</a> (formerly known as grblControl) I
+had to compile it myself. But since I never use the QT libraries otherwise
+it would pull in more than 600MB of libraries and header files which I would
+have to clean up afterwards in order to keep my system as lean as possible.</p>
+<p>A perfect opportunity to find out why containers might be useful!
+I am using podman-rootless, but plain old docker would work exactly the same
+way. Just replace <code>podman</code> with <code>docker</code> in the following commands.</p>
+<h2 id="setting-up-the-build-environment">Setting up the build environment</h2>
+<p>Download and unpack the Candle source code somewhere.</p>
+<pre><code>git clone https://github.com/Denvi/Candle.git
+</code></pre>
+<p>Start an interactive bash session on an Ubuntu in a container and give it
+access to the directory with the Candle sources:</p>
+<pre><code>podman run -v /path/to/candle/dir:/build -it ubuntu bash
+</code></pre>
+<p>The magic unfolds: A quick download (72MB), some unpacking et voilà: A bash
+root prompt, running on a minimal ubuntu 20.04 - ready for action! <code>ls /build</code> should show the Candle source directory.</p>
+<h2 id="build-process-inside-the-container">Build process inside the container</h2>
+<p>Now I am basically following <a href="https://naisema.blogspot.com/2017/11/install-candle-on-ubuntu-64bit-machines.html">Naisema&rsquo;s
+guide</a>
+inside this container environment. These commands install all the required
+dependencies. More than 600MB in my case. <code>gksu</code> seem to be merged into one
+of the other QT files and is no longer required or even available:</p>
+<pre><code>apt update
+apt install make gcc g++
+apt install qt5-default qt5-qmake libqt5serialport5-dev
+</code></pre>
+<p>It asks about the timezone. It doesn&rsquo;t matter, any answer will do.</p>
+<pre><code>cd /build
+qmake
+make
+</code></pre>
+<p>Done! The binary is generated in <code>src</code> directory. We can leave the
+containered bash:</p>
+<pre><code>exit
+</code></pre>
+<h2 id="install-the-binaries">Install the binaries</h2>
+<p>Strangely, there is no <code>make install</code> target and we have to do it ourself:</p>
+<pre><code>install -Dt src/Candle /usr/local/bin
+install -m644 -D Candle/src/images/candle_256.png /usr/local/share/app-install/icons/candle.png
+</code></pre>
+<p>I am not sure about the content of <code>src/translations</code>. They might be useful,
+but it works without them.</p>
+<p>Finally, save this as <code>/usr/local/share/applications/candle.desktop</code>:</p>
+<pre><code>[Desktop Entry]
+Name=Candle
+GenericName=Candle
+Comment=CNC controller software
+Exec=/usr/local/bin/Candle
+Icon=/usr/local/share/app-install/icons/candle.png
+Terminal=false
+Type=Application
+Categories=Development;Electronics;
+</code></pre>
+<h2 id="deleting-the-container-files">Deleting the container files</h2>
+<p>Find out the name of the containered system (last column):</p>
+<pre><code>podman ps -a
+</code></pre>
+<p>And delete all the files:</p>
+<pre><code>podman rm [container-name]
+</code></pre>
+<p>Done! A clutter free system again!</p>
+<h2 id="file-attachments">File attachments</h2>
+<p><a href="https://tenbaht.github.io/uploads/candle.tgz">pre-compiled 64 bit binary</a> for Ubuntu 20.04/Mint 19</p>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://tenbaht.github.io/posts/installing-onetab-in-palemoon/"><i class="fa fa-chevron-circle-left"></i> Installing Onetab in Palemoon</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2018-2020 - Michael Mayer | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://tenbaht.github.io/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://tenbaht.github.io/js/scripts.js"></script>
+</body>
+
+</html>
