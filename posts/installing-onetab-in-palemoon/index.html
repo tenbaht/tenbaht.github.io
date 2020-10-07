@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Michael Mayer" />
-  <meta name="generator" content="Hugo 0.40.1" />
+  <meta name="generator" content="Hugo 0.68.3" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
@@ -90,76 +90,50 @@
         </li>
         
 
-        <li>0 min read</li>
+        <li>2 min read</li>
     </ul>
 </aside>
     
 
-    <p><img src="https://tenbaht.github.io/images/titelbild.jpg" alt="Installing Onetab in Palemoon" />
-
+    <p><img src="https://tenbaht.github.io/images/titelbild.jpg" alt="Installing Onetab in Palemoon">
 <figure>
-    
-        <img src="https://tenbaht.github.io/images/installing-onetab-in-palemoon.png" alt="Onetab 1.9 running with palemoon 28.9.0.2" />
-    
-    
-    <figcaption>
-        <p>
-        Onetab 1.9 running with palemoon 28.9.0.2
-        
-            
-        
-        </p> 
-    </figcaption>
-    
+    <img src="https://tenbaht.github.io/images/installing-onetab-in-palemoon.png"
+         alt="Onetab 1.9 running with palemoon 28.9.0.2"/> <figcaption>
+            <p>Onetab 1.9 running with palemoon 28.9.0.2</p>
+        </figcaption>
 </figure>
 </p>
-
 <p>The amazing and absolutely essential onetab extension is only available for
 firefox and chrome, not for the stripped-down firefox version palemoon. But
 with the help of archive.org and a text editor it is possible to install an
 older (but fully functional) version. A pre-patched add-on file is included
-in this posting.
-</p>
-
+in this posting.</p>
 <p>Palemoon still uses the old xpi file format for add-ons. It never did the
 switch to the crx format that chrome and more versions of firefox use. But
 it is very easy to patch an old xpi file for use with palemoon.</p>
-
 <h2 id="pre-patched-files">Pre-patched files</h2>
-
 <p>If you trust me enough just click here to install this pre-patched version
 of the 1.9 files:
 <a href="static/uploads/palemoon-onetab-1.9.xpi">Patched version 1.9 for palemoon</a></p>
-
 <p>And for reference the original xpi file as from archive.org/mozilla.org:
 <a href="static/uploads/onetab-1.9-fx.xpi">Original version 1.9 for firefox</a></p>
-
 <h2 id="patching-the-add-on-archive">Patching the add-on archive</h2>
-
 <p>If you are afraid of unauthorized modifications in my version here is how to
 patch it yourself.</p>
-
 <p>The older versions of onetab in the xpi format are still available at
 <a href="https://web.archive.org/web/20150922055958/https://addons.mozilla.org/en-US/firefox/addon/onetab/versions/">archive.org</a>.</p>
-
 <p>Right click on the <a href="https://web.archive.org/web/20150922055958/https://addons.mozilla.org/firefox/downloads/file/267884/onetab-1.9-fx.xpi?src=version-history">add to firefox</a>
 button to save the xpi file.</p>
-
 <p>unzip the downloaded file in an empty directory:</p>
-
 <pre><code>mkdir onetab
 cd onetab
 unzip ~/Downloads/onetab-1.9-fx.xpi
 </code></pre>
-
 <p>Edit install.rdf by replacing the firefox id ec8030f7-c20a-464f-9b0e-13a3a9e97384
 with the palemoon id 8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4:</p>
-
 <pre><code>sed -i s/ec8030f7-c20a-464f-9b0e-13a3a9e97384/8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4/ install.rdf
 </code></pre>
-
 <p>The result should read like this:</p>
-
 <pre><code>&lt;em:targetApplication&gt;
   &lt;Description&gt;
     &lt;em:id&gt;{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}&lt;/em:id&gt;
@@ -168,14 +142,10 @@ with the palemoon id 8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4:</p>
   &lt;/Description&gt;
 &lt;/em:targetApplication&gt;
 </code></pre>
-
 <p>repack the xpi file:</p>
-
 <pre><code>zip -r ../palemoon-onetab-1.9.xpi .
 </code></pre>
-
 <p>Now open this file in palemoon to install the addon:</p>
-
 <pre><code>palemoon ../palemoon-onetab-1.9.xpi
 </code></pre>
 
@@ -200,7 +170,7 @@ with the palemoon id 8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4:</p>
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2018-2019 - Michael Mayer | 
+        <h6>Copyright © 2018-2020 - Michael Mayer | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://tenbaht.github.io/index.xml">Subscribe</a></h6>
     </footer>

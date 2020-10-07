@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Michael Mayer" />
-  <meta name="generator" content="Hugo 0.40.1" />
+  <meta name="generator" content="Hugo 0.68.3" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
@@ -101,25 +101,17 @@
 </aside>
     
 
-    
-
-<p>(Sorry, no english version yet.)</p>
-
+    <p>(Sorry, no english version yet.)</p>
 <p>Der Ofen funktioniert und tut genau das, was er soll. Gut. Aber der Weg
 dorthin war länger und umständlicher als er hätte sein müssen.</p>
-
 <h2 id="was-ich-heute-anders-machen-würde">Was ich heute anders machen würde</h2>
-
 <h3 id="immer-eine-eigene-platine">Immer eine eigene Platine</h3>
-
 <p>Am Ende sehe ich mich wieder bestätigt: Niemals ohne richtige Platine.
 Fertige Komponenten sind extrem nützlich für schnelle Versuchsaufbauten,
 aber für ein fertiges Gerät ergeben sich zu viele Kompromisse und am Ende
 dauert der Aufbau sogar länger, als wenn ich gleich eine spezielle Platine
 gemacht hätte.</p>
-
 <p>Probleme hier:</p>
-
 <ul>
 <li>Display steht auf dem Kopf. Entweder müsste ich das USB-Kabel nach links
 aus dem Gehäuse führen (was dann die Tür blockiert) oder das Display steht
@@ -139,43 +131,32 @@ reduziert sich auf ca. 2.5K statt der eigentlich möglichen 0.5K.</li>
 graphisches Display eingebaut. Dafür gibt es aber kein Shield. Wenn ich
 das aufbaue, kann ich aber auch gleich alles auf eine Platine setzen.</li>
 </ul>
-
 <p>Um das Problem mit der ADC-Referenz-Spannung könnte ich vielleicht noch
 drumrumbasteln.  Die Diode muss ja nur maximal einmal pro Sekunde abgefragt
 werden, da könnte ich auch die ADC-Referenzspannung umschalten und die
 notwendige Wartezeit in Kauf nehmen.  Oder die Zeit, die ich zum Austüfteln
 von solchem Murks brauche lieber gleich in eine richtige Platine
 investieren.</p>
-
 <h4 id="anderes-display">Anderes Display</h4>
-
 <p>Besser wäre es, das Gehäuse senkrecht zu montieren. Das erfordert ein
 weniger breites Display - ein kleines graphisches Display würde sich
 anbieten.</p>
-
 <h4 id="andere-cpu">Andere CPU</h4>
-
 <p>Graphisches Display bedeutet größerer Speicherbedarf - warum also nicht
 gleich ein kleines STM32-Modul (Bluepill/Redpill) einsetzen? Kostet sogar
 weniger als ein Arduino Nano und ist auch nicht komplizierter zu verwenden.
 Eigentlich gibt es heute wirklich kaum noch Gründe, überhaupt noch auf AVRs
 zu setzen - außer, dass sie so schön übersichtlich sind.</p>
-
 <h4 id="relais-statt-opto-triac">Relais statt Opto-Triac</h4>
-
 <p>Der Nulldurchgangsdetektor im verwendeten Opto-Triac S202S02 erlaubt eine sehr
 elegante, feinfühlige und trotzdem störungsarme Modulation der Heizleistung.</p>
-
 <p>Der schließlich verwendete Regel-Algorithmus nutzt diese Möglichkeit aber
 gar nicht und schaltet doch nur vier Mal pro Lötzyklus - das hätte ein
 einfaches Relais-Modul aus China ganz ohne Lötarbeiten auch geschafft (hier
 also doch wieder ein Fertigmodul!)</p>
-
 <h4 id="wenn-triac-dann-etwas-lieferbares">Wenn Triac, dann etwas lieferbares</h4>
-
 <p>Das Opto-Triac S202S02 wird nicht mehr produziert. Es ist mittlerweile schwer
 erhältlich und unverhältnismäßig teuer (selbst bei aliexpress).</p>
-
 <p>Wenn schon löten, dann besser einen einfaches Opto-Triac ohne Leistungsteil
 wie z.B. etwas aus der MOC3xxx-Baureihe mit einem normalen Triac verwenden.
 Viel günstiger und jederzeit problemlos erhältlich.</p>
@@ -206,7 +187,7 @@ Viel günstiger und jederzeit problemlos erhältlich.</p>
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2018-2019 - Michael Mayer | 
+        <h6>Copyright © 2018-2020 - Michael Mayer | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://tenbaht.github.io/index.xml">Subscribe</a></h6>
     </footer>

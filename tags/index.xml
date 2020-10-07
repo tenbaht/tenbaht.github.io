@@ -1,36 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Embedded notes</title>
     <link>https://tenbaht.github.io/tags/</link>
     <description>Recent content in Tags on Embedded notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2018-2019 - Michael Mayer</copyright>
-    <lastBuildDate>Mon, 02 Apr 2018 12:05:00 +0200</lastBuildDate>
+    <copyright>Copyright &amp;copy; 2018-2020 - Michael Mayer</copyright>
+    <lastBuildDate>Fri, 24 Jul 2020 14:18:20 +0200</lastBuildDate>
     
 	<atom:link href="https://tenbaht.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Electronic</title>
-      <link>https://tenbaht.github.io/tags/electronic/</link>
-      <pubDate>Mon, 02 Apr 2018 12:05:00 +0200</pubDate>
+      <title>www</title>
+      <link>https://tenbaht.github.io/tags/www/</link>
+      <pubDate>Fri, 24 Jul 2020 14:18:20 +0200</pubDate>
       
-      <guid>https://tenbaht.github.io/tags/electronic/</guid>
+      <guid>https://tenbaht.github.io/tags/www/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Kicad</title>
-      <link>https://tenbaht.github.io/tags/kicad/</link>
-      <pubDate>Fri, 21 Sep 2018 22:29:17 +0200</pubDate>
-      
-      <guid>https://tenbaht.github.io/tags/kicad/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pxe</title>
+      <title>PXE</title>
       <link>https://tenbaht.github.io/tags/pxe/</link>
       <pubDate>Fri, 19 Oct 2018 19:18:05 +0200</pubDate>
       
@@ -39,7 +30,25 @@
     </item>
     
     <item>
-      <title>Reflow Oven</title>
+      <title>kicad</title>
+      <link>https://tenbaht.github.io/tags/kicad/</link>
+      <pubDate>Fri, 21 Sep 2018 22:29:17 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/tags/kicad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>electronic</title>
+      <link>https://tenbaht.github.io/tags/electronic/</link>
+      <pubDate>Mon, 02 Apr 2018 12:05:00 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/tags/electronic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reflow oven</title>
       <link>https://tenbaht.github.io/tags/reflow-oven/</link>
       <pubDate>Mon, 02 Apr 2018 12:05:00 +0200</pubDate>
       
@@ -48,11 +57,20 @@
     </item>
     
     <item>
-      <title>Www</title>
-      <link>https://tenbaht.github.io/tags/www/</link>
-      <pubDate>Fri, 24 Jul 2020 14:18:20 +0200</pubDate>
+      <title>PCB</title>
+      <link>https://tenbaht.github.io/tags/pcb/</link>
+      <pubDate>Sun, 01 Apr 2018 00:02:36 +0200</pubDate>
       
-      <guid>https://tenbaht.github.io/tags/www/</guid>
+      <guid>https://tenbaht.github.io/tags/pcb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SMT</title>
+      <link>https://tenbaht.github.io/tags/smt/</link>
+      <pubDate>Sun, 01 Apr 2018 00:02:36 +0200</pubDate>
+      
+      <guid>https://tenbaht.github.io/tags/smt/</guid>
       <description></description>
     </item>
     

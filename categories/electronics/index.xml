@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Electronics on Embedded notes</title>
+    <title>electronics on Embedded notes</title>
     <link>https://tenbaht.github.io/categories/electronics/</link>
-    <description>Recent content in Electronics on Embedded notes</description>
+    <description>Recent content in electronics on Embedded notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2018-2019 - Michael Mayer</copyright>
+    <copyright>Copyright &amp;copy; 2018-2020 - Michael Mayer</copyright>
     <lastBuildDate>Fri, 21 Sep 2018 22:29:17 +0200</lastBuildDate>
     
 	<atom:link href="https://tenbaht.github.io/categories/electronics/index.xml" rel="self" type="application/rss+xml" />

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Electronic on Embedded notes</title>
+    <title>electronic on Embedded notes</title>
     <link>https://tenbaht.github.io/tags/electronic/</link>
-    <description>Recent content in Electronic on Embedded notes</description>
+    <description>Recent content in electronic on Embedded notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2018-2019 - Michael Mayer</copyright>
+    <copyright>Copyright &amp;copy; 2018-2020 - Michael Mayer</copyright>
     <lastBuildDate>Mon, 02 Apr 2018 12:05:00 +0200</lastBuildDate>
     
 	<atom:link href="https://tenbaht.github.io/tags/electronic/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,8 @@
       
       <guid>https://tenbaht.github.io/posts/lessons-learned.de/</guid>
       <description>(Sorry, no english version yet.)
-Der Ofen funktioniert und tut genau das, was er soll. Gut. Aber der Weg dorthin war länger und umständlicher als er hätte sein müssen.</description>
+Der Ofen funktioniert und tut genau das, was er soll. Gut. Aber der Weg dorthin war länger und umständlicher als er hätte sein müssen.
+Was ich heute anders machen würde Immer eine eigene Platine Am Ende sehe ich mich wieder bestätigt: Niemals ohne richtige Platine.</description>
     </item>
     
     <item>
@@ -27,12 +28,9 @@ Der Ofen funktioniert und tut genau das, was er soll. Gut. Aber der Weg dorthin 
       <pubDate>Sun, 01 Apr 2018 00:02:36 +0200</pubDate>
       
       <guid>https://tenbaht.github.io/posts/reflow-oven/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/reflow-800.jpg&#34; alt=&#34;my reflow oven&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/reflow-800.jpg&#34; alt=&#34;my reflow oven&#34;&gt;&lt;/p&gt;
 &lt;p&gt;A while ago I found a toaster oven in the trash and now I converted it into
-a reflow oven for soldering of SMD circuit boards.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+a reflow oven for soldering of SMD circuit boards.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -41,12 +39,9 @@ a reflow oven for soldering of SMD circuit boards.&lt;/p&gt;
       <pubDate>Sun, 01 Apr 2018 00:02:36 +0200</pubDate>
       
       <guid>https://tenbaht.github.io/posts/reflow-oven.de/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/reflow-800.jpg&#34; alt=&#34;Mein SMD-reflow-Ofen&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/reflow-800.jpg&#34; alt=&#34;Mein SMD-reflow-Ofen&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Umbau eines einfachen Mini-Backofens in einen Reflow-Ofen zum Löten von
-SMD-Platinen.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+SMD-Platinen.&lt;/p&gt;</description>
     </item>
     
   </channel>

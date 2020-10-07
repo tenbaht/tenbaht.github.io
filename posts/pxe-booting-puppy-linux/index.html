@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Michael Mayer" />
-  <meta name="generator" content="Hugo 0.40.1" />
+  <meta name="generator" content="Hugo 0.68.3" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
@@ -95,62 +95,45 @@
 </aside>
     
 
-    
-
-<p>PXE booting Puppy Linux is actually quite easy if you already have a PXE
+    <p>PXE booting Puppy Linux is actually quite easy if you already have a PXE
 server up and running. The idea is simple: Add the <code>*.sfs</code> file containing
 the file system into the initrd and use this for booting.</p>
-
 <p>This post assumes your tftpserver is already set up
 and serves files from <code>/opt/tftpboot</code>.</p>
-
 <p>The description at [PXE-Netbooting using Puppy
-Linux]<a href="https://docs.google.com/document/d/1bkMJ-2wjAAC8HVZZTZBFxBELbojoGctLMg27KazqvRw/edit?hl=en&amp;pli=1#">https://docs.google.com/document/d/1bkMJ-2wjAAC8HVZZTZBFxBELbojoGctLMg27KazqvRw/edit?hl=en&amp;pli=1#</a>
+Linux]https://docs.google.com/document/d/1bkMJ-2wjAAC8HVZZTZBFxBELbojoGctLMg27KazqvRw/edit?hl=en&amp;pli=1#
 tells you in detail what to do to get it working using a Puppy Linux Server
 Host. But it does not list the (few and simple) steps needed to get it
 running on an existing PXE server.</p>
-
 <p>Mount the iso image (do all these steps as root):</p>
-
 <pre><code>mount puppy.iso /mnt
 </code></pre>
-
 <p>Copy the kernel into your tftp directory:</p>
-
 <pre><code>mkdir /opt/tftpboot/puppy
 cp -av /mnt/vmlinuz /opt/tftpboot/puppy
 </code></pre>
-
 <p>Unpack the initrd (as root):</p>
-
 <pre><code>mkdir /tmp/x
 cd /tmp/x
 zcat /mnt/initrd.gz | cpio -i
 </code></pre>
-
 <p>Add the <code>*.sfs</code> file from the iso and repack the initrd:</p>
-
 <pre><code>cp -av /mnt/*.sfs .
 find . | cpio -o -H newc | gzip -9 &gt; /opt/tftpboot/puppy/initrd.gz
 </code></pre>
-
 <p>Add this to your /opt/tftpboot/pxeboot.cfg/default:</p>
-
 <pre><code># Puppy Linux
 LABEL puppy
 MENU LABEL PuppyLinux
 KERNEL /puppy/vmlinuz
 APPEND initrd=/puppy/initrd.gz
 </code></pre>
-
 <p>Done!</p>
-
 <h2 id="links">Links</h2>
-
 <ul>
 <li><a href="http://www.murga-linux.com/puppy/viewtopic.php?mode=attach&amp;id=37112">netboot script PET</a>
 that contains the original mknetboot.sh script.</li>
-<li>[PXE-Netbooting using Puppy Linux]<a href="https://docs.google.com/document/d/1bkMJ-2wjAAC8HVZZTZBFxBELbojoGctLMg27KazqvRw/edit?hl=en&amp;pli=1#">https://docs.google.com/document/d/1bkMJ-2wjAAC8HVZZTZBFxBELbojoGctLMg27KazqvRw/edit?hl=en&amp;pli=1#</a></li>
+<li>[PXE-Netbooting using Puppy Linux]https://docs.google.com/document/d/1bkMJ-2wjAAC8HVZZTZBFxBELbojoGctLMg27KazqvRw/edit?hl=en&amp;pli=1#</li>
 </ul>
 
 
@@ -179,7 +162,7 @@ that contains the original mknetboot.sh script.</li>
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2018-2019 - Michael Mayer | 
+        <h6>Copyright © 2018-2020 - Michael Mayer | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://tenbaht.github.io/index.xml">Subscribe</a></h6>
     </footer>

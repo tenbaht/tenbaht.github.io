@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Michael Mayer" />
-  <meta name="generator" content="Hugo 0.40.1" />
+  <meta name="generator" content="Hugo 0.68.3" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
@@ -86,22 +86,16 @@
 </aside>
     
 
-    
-
-<p>Meine aktuelle Fritzbox macht Probleme, deshalb will ich die uralte 3170
+    <p>Meine aktuelle Fritzbox macht Probleme, deshalb will ich die uralte 3170
 zumindest vorübergehend wieder in Betrieb nehmen. Freetz bietet mehr
 Möglichkeiten als die normale Firmware, also mal ausprobieren.</p>
-
 <h2 id="freetz-image-compilieren">freetz-Image compilieren</h2>
-
 <p>Es gibt keine fertigen Images, sondern es muss erst selbst aus den
 svn-Sourcen compiliert werden.  Das build-System von stable-2.0 ist total
 veraltet und lässt sich nur mit gcc bis zur Version 5.x compilieren.
 Besser trunk verwenden, der funktioniert auch mit gcc-7.0.</p>
-
 <p>Mein Basissystem ist Linux Mint 19 (Ubuntu 18.04), 64 Bit. Nötige Pakete
 installieren:</p>
-
 <pre><code># nötige Pakete:
 apt install subversion libtool-bin
 # für trunk zusätzlich noch:
@@ -109,38 +103,27 @@ apt install acl-dev libcap-dev libreadline-dev
 # auf 64-Bit System zusätzlich noch:
 apt install libncurses-dev gcc-multilib libc6-dev-i386
 </code></pre>
-
 <p>System runterladen und konfigurieren:</p>
-
 <pre><code>svn checkout http://svn.freetz.org/trunk
 cd trunk
 umask 0022
 make menuconfig
 </code></pre>
-
 <p>Unter &ldquo;Webinterfaces-&gt;AVM Firewall&rdquo; aktivieren.  Speicher ist leider extrem
 knapp und es müssen als Ausgleich ein paar andere Funktionen deaktiviert
 werden.  Ich habe Samba, FTP und Musikserver abgeschaltet, da ich eh&rsquo; keinen
 USB-Stick mit der Box verwenden werde.</p>
-
 <p>System compilieren (dauert ein paar Minuten):</p>
-
 <pre><code>make
 </code></pre>
-
 <p>Fertiges Image findet sich in <code>images/</code>, die zum Bauen verwendete
 Konfiguration in <code>.config</code>. Das Makefile lädt das Original-Firmware-Image
 von der AVM-Seite nach <code>dl/fw/fritz.box_wlan_3170.49.04.58.image</code></p>
-
 <h2 id="flashen">Flashen</h2>
-
 <p>Ganz normal als Firmware-Update.</p>
-
 <h2 id="einrichten">Einrichten</h2>
-
 <p>Telnet-Server aktivieren, einloggen (root/freetz), dann Sicherheitsstufe auf
 0 (unbeschränkt) setzen:</p>
-
 <pre><code>echo 0 &gt; /tmp/flash/mod/security
 modsave
 </code></pre>
@@ -171,7 +154,7 @@ modsave
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2018-2019 - Michael Mayer | 
+        <h6>Copyright © 2018-2020 - Michael Mayer | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://tenbaht.github.io/index.xml">Subscribe</a></h6>
     </footer>

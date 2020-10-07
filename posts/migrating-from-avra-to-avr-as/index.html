@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Michael Mayer" />
-  <meta name="generator" content="Hugo 0.40.1" />
+  <meta name="generator" content="Hugo 0.68.3" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
@@ -84,77 +84,54 @@
 
         
 
-        <li>0 min read</li>
+        <li>7 min read</li>
     </ul>
 </aside>
     
 
     <figure>
-    
-        <img src="https://tenbaht.github.io/images/migrating-avra-title.png" alt="assemble avra projects with avr-as" />
-    
-    
-    <figcaption>
-        <p>
-        assemble avra projects with avr-as
-        
-            
-        
-        </p> 
-    </figcaption>
-    
+    <img src="https://tenbaht.github.io/images/migrating-avra-title.png"
+         alt="assemble avra projects with avr-as"/> <figcaption>
+            <p>assemble avra projects with avr-as</p>
+        </figcaption>
 </figure>
-
 
 <p>The main advantage of avr-as over avra is the possibility to generate
 linkable .o object files that can be mixed with C files.</p>
-
 <p>Unfortunatly, the syntax differs slightly between these two assemblers. And
 it turns out that the syntax differences are big enough to make the
 conversion of existing source code a non-trivial task that tends to take way
 longer than expected.</p>
-
 <p>To save others some troubles in similar situations, here are my findings
 about <a href="https://github.com/tenbaht/servo-motor-controller">porting the SMC3</a>
 project from avra to avr-as/gas.</p>
-
-<p></p>
-
 <p>Most of the difficulties boil down to the point that avr-as has no direct
 replacement for avra&rsquo;s <code>.def</code> statement. <code>#define</code> looks quite similar, but
 it doesn&rsquo;t behave in the same way. The seemingly subtle differences can lead
 to very unexpected effects that are hard to debug.</p>
-
 <h2 id="macro-parameter-syntax">Macro parameter syntax</h2>
-
 <p>avr-as requires to specify the number of parmeters and refers to them by
 <code>\name</code> while avra simply refers by numbers <code>@0</code>.</p>
-
 <p>avra:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">	.macro  sti
 	        ldi     r16,@1
 	        st      @0,r16
-	.endm</code></pre></div>
-<p>avr-as:</p>
+	.endm
+</code></pre></div><p>avr-as:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">	.macro  sti     adr, val
 	        ldi     r16, \val
 	        st      \adr, r16
-	.endm</code></pre></div>
-<h4 id="conclusion">Conclusion</h4>
-
+	.endm
+</code></pre></div><h4 id="conclusion">Conclusion</h4>
 <p>Easy.</p>
-
 <h2 id="macros-and-preprocessor-constants">Macros and preprocessor constants</h2>
-
 <p>With avr-as it is very important to keep in mind that the preprocessing step
 is really <strong>pre</strong>processing. There is a fundamental difference between a
 <code>.macro</code> definition and using a &lsquo;#define`. Referencing each other can be
 tricky.</p>
-
 <p>avr-as has no access to assembler values at the time the preprocessor runs
 and <code>.macro</code> definitions can only access constant preprocessor definitions,
 but they can&rsquo;t construct preprocessor references.</p>
-
 <p>For avra both, <code>.def</code> and <code>.macro</code> are part of the assembling step and they
 can refer to each other freely. This allows for things like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">	; for avra
@@ -168,21 +145,17 @@ can refer to each other freely. This allows for things like this:</p>
 	.endm
 
 	start:
-		addiw	A, 0x1234</code></pre></div>
-<p>The macro is expanded at assembly time into:</p>
-
+		addiw	A, 0x1234
+</code></pre></div><p>The macro is expanded at assembly time into:</p>
 <pre><code>start:
         subi    AL,low(-(0x1234))
         sbci    AH,high(-(0x1234))
 </code></pre>
-
-<p>And now the assembly-time <code>.def</code>&rsquo;s are replaced:</p>
-
+<p>And now the assembly-time <code>.def</code>'s are replaced:</p>
 <pre><code>start:
         subi    r16,low(-(0x1234))
         sbci    r17,high(-(0x1234))
 </code></pre>
-
 <p>Doing the same with avr-as by using <code>#define</code> for the register names is not
 possible, though. Just adding a suffix to a macro parameter is supported by
 avr-as using the <code>\()</code> syntax, but that doesn&rsquo;t help in this case:</p>
@@ -197,21 +170,17 @@ avr-as using the <code>\()</code> syntax, but that doesn&rsquo;t help in this ca
 	.endm
 
 	start:
-		addiw	A, 0x1234</code></pre></div>
-<p>This would be expanded as:</p>
-
+		addiw	A, 0x1234
+</code></pre></div><p>This would be expanded as:</p>
 <pre><code>start:
         subi    AL,lo8(-(0x1234))
         sbci    AH,hi8(-(0x1234))
 </code></pre>
-
 <p>But AL and AH are unknown at this point. They are preprocessor
 defines and the preprocessing step happened a long time ago. An
 assembler declaration like <code>AL = r16</code> wouldn&rsquo;t help, as these are only
 reference by value and <code>r16</code> is not a valid value but an identifier.</p>
-
 <h2 id="register-handling">Register handling</h2>
-
 <p>For this specific case there is a small loophole. avr-as allows simple
 integers as register specifiers. So it is possible to do this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">	; for avr-as
@@ -224,82 +193,65 @@ integers as register specifiers. So it is possible to do this:</p>
 	.endm
 
 	start:
-		addiw	A, 0x1234</code></pre></div>
-<p>This would expand as:</p>
+		addiw	A, 0x1234
+</code></pre></div><p>This would expand as:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">	start:
 	        subi    16,lo8(-(0x1234))
-	        sbci    17,hi8(-(0x1234))</code></pre></div>
-<p>This is less robust, though. If you use it with I/O registers it implicitly
+	        sbci    17,hi8(-(0x1234))
+</code></pre></div><p>This is less robust, though. If you use it with I/O registers it implicitly
 assumes that the high byte it at the following address (and that is exists
 at all). The avra way is more fool-prof. If there is no &lsquo;*L&rsquo; and &lsquo;*H&rsquo;
 definition for that specific I/O register, it will trigger an assembler
 error. avr-as can&rsquo;t detect that.</p>
-
 <h2 id="defining-values">Defining values</h2>
-
 <p>avra uses</p>
-
-<pre><code>.def name   = replacement   ; simple avra define and asm comment
+<pre><code>.def name	= replacement	; simple avra define and asm comment
 </code></pre>
-
 <p>and avr-as uses</p>
-
-<pre><code>#define name    replacement // avr-as define and C comment
+<pre><code>#define name	replacement	// avr-as define and C comment
 </code></pre>
-
 <p>Note the different comment tags. avr-as uses the C-preprocessor, so it only
 detects (and removes) C-comments at this point. An assembler comment would
 become part of the replacement string and would be inserted every time the
 define is used, most probably breaking things.</p>
-
 <p>See how bad it can get:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">; this is for avr-as, but it doesn&#39;t work as intended
 
 #define	buffer	(RAMSTART+0x100)	; buffer area
 
-	ld	r16, buffer+32		; use this</code></pre></div>
-<p>The C proprocessor has no idea about assembler syntax. All it does is to
+	ld	r16, buffer+32		; use this
+</code></pre></div><p>The C proprocessor has no idea about assembler syntax. All it does is to
 replace some strings. This would come out:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">; this is for avr-as, but it doesn&#39;t work as intended
 
-	ld	r16, (RAMSTART+0x100)	; buffer area+32		; use this</code></pre></div>
-<p>It will assemble just fine without any warning, but you will have a hell of
+	ld	r16, (RAMSTART+0x100)	; buffer area+32		; use this
+</code></pre></div><p>It will assemble just fine without any warning, but you will have a hell of
 a time debugging that. Using an assembler variable instead of a <code>#define</code>
-would haved saved your day in this case:<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></p>
+would haved saved your day in this case:<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">; this is for avr-as and it will work fine
 
 buffer	= RAMSTART+0x100		; buffer area
 
-	ld	r16, buffer+32		; use this</code></pre></div>
-<h4 id="conclusion-1">Conclusion</h4>
-
+	ld	r16, buffer+32		; use this
+</code></pre></div><h4 id="conclusion-1">Conclusion</h4>
 <p>Be <strong>very</strong> aware of the different stages of assembly when
 working with avr-as!</p>
-
 <h2 id="ifdef-and-ifdef">.ifdef and #ifdef</h2>
-
 <p>Again, preprocessor and assembler. They both access a different set of
 defined values.</p>
-
 <p>Use <code>.ifdef</code> for assembler defines, because the preprocessor has no idea
 about them.</p>
-
 <p>In most cases, use <code>#ifdef</code> for values defined by <code>#define</code> like the
 register definitions from avr/io.h.</p>
-
 <p>In general, <code>.ifdef</code> is more flexible because it can access all assembler
 defines and most of the preprocessor defines (except for concatenated label
 names like in the macro example).</p>
-
 <p>But since there is only <code>.ifdef</code> and no <code>.if defined(NAME)</code>, it is limited
 to single tests only. The usual CPU type tests are easier to implement by
 using <code>#if defined()||defined()...</code>.</p>
-
 <p>Again, always be aware at which stage of assembly you would like the test to
 happen.</p>
-
 <h2 id="pre-defined-variables">Pre-defined variables</h2>
-
 <p>avr-as allows for the full zoo of gcc predefines. The classic device type
 test is as usual:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">#if defined(__AVR_ATtiny2313__) || defined(__AVR_ATtiny2313A__)
@@ -308,57 +260,49 @@ test is as usual:</p>
 	; do something else
 #else
 # error &#34;no valid device chosen&#34;
-#endif</code></pre></div>
-<p>The syntax for avra is slightly different. Please notice the slightly
+#endif
+</code></pre></div><p>The syntax for avra is slightly different. Please notice the slightly
 different device type name without the <code>AVR_</code> part in the middle:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">.if (__DEVICE__ == __ATtiny2313__) || (__DEVICE__ == __ATtiny2313A__)
 	; do something
 .elif (__DEVICE__ == __ATmega328P__)
 	; do something else
-.endif</code></pre></div>
-<h2 id="program-counter">Program counter</h2>
-
+.endif
+</code></pre></div><h2 id="program-counter">Program counter</h2>
 <p>avra refers to the current program counter address as <code>PC</code>, avr-as uses <code>.</code>.
 But there is a more subtle and much more important difference:</p>
-
 <p>avra counts words, but avr-as counts the bytes. But it is more complex than
 just multiplying everything by two.</p>
-
 <p><strong>relative jump with avra</strong>: <code>PC</code> refers to the address of the current
 command and counts the distance in words:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">	breq	PC+3
 	nop
 	inc	r0
-	ret		; the branch lands here</code></pre></div>
-<p><strong>relative jump with avr-as</strong>: <code>.</code> refers already to the address of the
+	ret		; the branch lands here
+</code></pre></div><p><strong>relative jump with avr-as</strong>: <code>.</code> refers already to the address of the
 following command and counts the distance in bytes:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">	breq	.+4
 	nop
 	inc	r0
-	ret		; the branch lands here</code></pre></div>
-<h3 id="conclusion-2">Conclusion</h3>
-
+	ret		; the branch lands here
+</code></pre></div><h3 id="conclusion-2">Conclusion</h3>
 <p>Stop counting. Use labels.</p>
-
 <h2 id="flash-addresses">Flash addresses</h2>
-
 <p>avra counts flash addresses in words, but avr-as counts the bytes.</p>
-
 <p><strong>Refering to a string in the flash area with avra</strong>: Data blocks are
 automatically aligned to even addresses and padded as required.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">	ldi	r30, low(string*2)	; multiply by two for
 	ldi	r31, high(string*2)	; the byte address
 
-	string:	.db	&#34;Hello&#34;,13,10,0</code></pre></div>
-<p><strong>Refering to a string in the flash area with avr-as</strong>: avr-as does not
+	string:	.db	&#34;Hello&#34;,13,10,0
+</code></pre></div><p><strong>Refering to a string in the flash area with avr-as</strong>: avr-as does not
 require the factor two for data addresses in the flash area. No need for
 even addresses here.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">	ldi	r30, lo8(string)
 	ldi	r31, high(string)
 
-	string:	.db	&#34;Hello&#34;,13,10,0</code></pre></div>
-<h2 id="pseudo-opcodes-and-operators">Pseudo-Opcodes and operators</h2>
-
+	string:	.db	&#34;Hello&#34;,13,10,0
+</code></pre></div><h2 id="pseudo-opcodes-and-operators">Pseudo-Opcodes and operators</h2>
 <table>
 <thead>
 <tr>
@@ -366,30 +310,24 @@ even addresses here.</p>
 <th>avr-as</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>low(val)</td>
 <td>lo8(val) (for RAM) or pm_lo8(val) (for flash)</td>
 </tr>
-
 <tr>
 <td>high(val)</td>
 <td>hi8(val) (for RAM) or pm_hi8(val) (for flash)</td>
 </tr>
 </tbody>
 </table>
-
 <p>This word/byte problem with flash addresses strikes again.</p>
-
 <h2 id="relocating-negative-pointer-values">Relocating negative pointer values</h2>
-
 <p>The AVRs offer a subi command, but no addi. So <code>subi reg, -val</code> is commonly
 used instead of <code>addi reg, val</code>. If <em>val</em> refers to an address, it needs to
 be relocated by the linker. Unfortunately, <em>lo8()</em> and <em>hi8()</em> are very
 picky about the syntax of their argument to choose the negative relocation
 type.</p>
-
 <p>This is <em>test.sx</em>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">.global main
 
@@ -402,34 +340,27 @@ main:
 	subi    r16, lo8(-main)		; ok
 	subi    r16, hi8(var)		; ok
 ;	subi    r16, hi8(-var)		; linker error message
-	subi    r16, hi8(-(var))	; ok</code></pre></div>
-<p>Compile it and check the result:</p>
-
+	subi    r16, hi8(-(var))	; ok
+</code></pre></div><p>Compile it and check the result:</p>
 <pre><code>avr-gcc -mmcu=atmega328 test.sx -o test.elf &amp;&amp; avr-objdump -d test.elf
 </code></pre>
-
 <p>Uncommenting the second last line yields to surprising results:</p>
-
 <pre><code>test.sx: Assembler messages:
 test.sx:13: Error: can't resolve `0' {.bss section} - `var' {.bss section}
 test.sx:13: Error: expression too complex
 </code></pre>
-
 <p>Negative relocations work within the .text segment, but when crossing
 segment borders it needs an additional pair of brackets. Odd. <em>Very</em> odd.</p>
-
-<hr />
-
+<hr>
 <p>Footnotes:</p>
-<div class="footnotes">
-
-<hr />
-
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:1">Yes, I am aware that hard-coding references to RAMSTART is a bad idea in any case. Just use a label with the <code>.fill</code> statement and let the assembler handle the details. But I need a simple example to illustrate the effect.
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p>Yes, I am aware that hard-coding references to RAMSTART is a bad idea in any case. Just use a label with the <code>.fill</code> statement and let the assembler handle the details. But I need a simple example to illustrate the effect. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
 </article>
 
@@ -456,7 +387,7 @@ segment borders it needs an additional pair of brackets. Odd. <em>Very</em> odd.
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2018-2019 - Michael Mayer | 
+        <h6>Copyright © 2018-2020 - Michael Mayer | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://tenbaht.github.io/index.xml">Subscribe</a></h6>
     </footer>

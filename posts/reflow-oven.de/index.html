@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Michael Mayer" />
-  <meta name="generator" content="Hugo 0.40.1" />
+  <meta name="generator" content="Hugo 0.68.3" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
@@ -93,121 +93,82 @@
         </li>
         
 
-        <li>0 min read</li>
+        <li>5 min read</li>
     </ul>
 </aside>
     
 
-    <p><img src="https://tenbaht.github.io/images/reflow-800.jpg" alt="Mein SMD-reflow-Ofen" /></p>
-
+    <p><img src="https://tenbaht.github.io/images/reflow-800.jpg" alt="Mein SMD-reflow-Ofen"></p>
 <p>Umbau eines einfachen Mini-Backofens in einen Reflow-Ofen zum Löten von
 SMD-Platinen.</p>
-
-<p></p>
-
 <p>Einfacher Mini-Backofen mit vier Heizelementen, je zwei oben und unten,
 zusammen 1200W, mechanischem Temperatur-Regler und mechanischer
 Zeitschaltuhr.</p>
-
 <p>Die Zeitschaltuhr und Temperaturregelung fliegen raus. Die Heizelemente
 werden stattdessen von einem Solid-State-Relais geschaltet (mechanische
 Relais hätten es auch getan). Die Glimmlampe im Power-Lämpchen wird durch
 eine rote LED zur Anzeige des Relais-Status ersetzt.</p>
-
 <p>An der Seite ist eine kleine Übertemperatur-Sicherung 216°C/10A/4mm an die
 Ofenwand geschraubt. Für bleihaltiges Löten genügt diese Maximaltemperatur,
 für bleifreies Löten ist ein Austausch vermutlich notwendig.</p>
-
-<p>Alternativen bei <a href="https://www.reichelt.de">Reichelt</a>:
-- MTS 240 Temperatursicherung, 10A, 240°C, 0,48€
-- MTS 228 Temperatursicherung, 10A, 228°C, 0,48€</p>
-
-<p><a href="https://www.pollin.de">Pollin</a>:
-- 260252    Temperatursicherung 227°C, 0,45€
-- 260253    Temperatursicherung 240°C, 0,45€</p>
-
+<p>Alternativen bei <a href="https://www.reichelt.de">Reichelt</a>:</p>
+<ul>
+<li>MTS 240 Temperatursicherung, 10A, 240°C, 0,48€</li>
+<li>MTS 228 Temperatursicherung, 10A, 228°C, 0,48€</li>
+</ul>
+<p><a href="https://www.pollin.de">Pollin</a>:</p>
+<ul>
+<li>260252	Temperatursicherung 227°C, 0,45€</li>
+<li>260253	Temperatursicherung 240°C, 0,45€</li>
+</ul>
 <h2 id="temperatur-profil">Temperatur-Profil</h2>
-
-
 <figure>
-    
-        <img src="https://i.stack.imgur.com/PhUW1.jpg" alt="Kester-Pprofil für bleihaltige Lötpaste" />
-    
-    
-    <figcaption>
-        <p>
-        Kester-Pprofil für bleihaltige Lötpaste
-        
-            
-        
-        </p> 
-    </figcaption>
-    
+    <img src="https://i.stack.imgur.com/PhUW1.jpg"
+         alt="Kester-Pprofil für bleihaltige Lötpaste"/> <figcaption>
+            <p>Kester-Pprofil für bleihaltige Lötpaste</p>
+        </figcaption>
 </figure>
-
 
 <p>Ein übliches Temperatur-Profil zum bleihaltigen Löten basiert auf diesen
 Temperaturen und Zeiten:</p>
-
 <ol>
 <li>ramp to soak (20°C-&gt;150°C): 1-3K/s (&lt;1.8K/s ideal)</li>
 <li>preheat/soak (150°C): const</li>
 <li>ramp to peak (bis 210°C..225°C): 1-3K/s</li>
 <li>cooling: so schnell wie möglich durch Öffnen der Klappe</li>
 </ol>
-
 <ul>
 <li>soaking zone: typ. 30..60s, max. 120s</li>
 <li>time to peak temp: typ. 210..300s, max. 330s</li>
 <li>reflow zone (Zeit mit T&gt;180°C): typ. 45..75s</li>
 </ul>
-
 <h2 id="software">Software</h2>
-
 <p>Regelungstechnisch ist der Ofen ein PT2-System. Theoretisch ist deshalb ein
 PID-Regler die ideale Lösung, aufgrund der großen Verzögerungen hat in der
 Praxis ein kombinierter Regel- und Steueralgorithmus aber besser
 funktioniert.</p>
-
 <p>Das Temperaturprofil ist in Phasen eingeteilt. Die Phasenübergänge sind
 teilweise temperatur- und teilweile zeitabhängig. Eine Anpassung an den
 jeweiligen Ofen ist deshalb notwendig.</p>
-
 <h2 id="hardware">Hardware</h2>
-
 <p>Die Elektronik wird der Einfachheit halber aus fertigen Modulen
 zusammengesetzt: Arduino Uno ($3,50), LCD-Keypad-Shield ($2,50) und ein
 MAX6675-Breakout-Board ($2,20) zum Anschluss eines Typ-K Thermoelements
 ($1,00).</p>
-
 <p>Das MAX6675-Board und die Anschlüsse für den Sensor und das Relais sind auf
 einem eigenen Shield auf Lochraster aufgebaut und im Frontgehäuse montiert:</p>
-
-
 <figure>
-    
-        <img src="https://tenbaht.github.io/images/reflow-shield-schematic.png" alt="Reflow-Shield" />
-    
-    
-    <figcaption>
-        <p>
-        Reflow-Shield
-        
-            
-        
-        </p> 
-    </figcaption>
-    
+    <img src="https://tenbaht.github.io/images/reflow-shield-schematic.png"
+         alt="Reflow-Shield"/> <figcaption>
+            <p>Reflow-Shield</p>
+        </figcaption>
 </figure>
-
 
 <p>Die Heizelemente werden mit einem Solid-State-Relais direkt im Ofengehäuse
 geschaltet, einfache Relais-Module ($0,60) würden aber genausogut
 funktionieren.  Dann kostet alles zusammen weniger als 10 Dollar bei
 <a href="https://www.aliexpress.com">Aliexpress</a>.</p>
-
 <p>Das LCD Keypad Shield verwendet diese Signale:</p>
-
 <table>
 <thead>
 <tr>
@@ -215,52 +176,42 @@ funktionieren.  Dann kostet alles zusammen weniger als 10 Dollar bei
 <th>Signal</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>D4</td>
 <td>LCD D4</td>
 </tr>
-
 <tr>
 <td>D5~</td>
 <td>LCD D5</td>
 </tr>
-
 <tr>
 <td>D6~</td>
 <td>LCD D6</td>
 </tr>
-
 <tr>
 <td>D7</td>
 <td>LCD D7</td>
 </tr>
-
 <tr>
 <td>D8</td>
 <td>LCD RS</td>
 </tr>
-
 <tr>
 <td>D9~</td>
 <td>LCD EN</td>
 </tr>
-
 <tr>
 <td>D10~</td>
 <td>LCD Backlight</td>
 </tr>
-
 <tr>
 <td>A0</td>
 <td>Spannungsteiler mit den Tasten</td>
 </tr>
 </tbody>
 </table>
-
 <p>Mein Reflow-Shield enthält diese Verbindungen:</p>
-
 <table>
 <thead>
 <tr>
@@ -268,47 +219,38 @@ funktionieren.  Dann kostet alles zusammen weniger als 10 Dollar bei
 <th>Signal</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>D13/SCK</td>
 <td>MAX SCK</td>
 </tr>
-
 <tr>
 <td>D12/MISO</td>
 <td>MAX SO</td>
 </tr>
-
 <tr>
 <td>D2</td>
 <td>MAX CS</td>
 </tr>
-
 <tr>
 <td>A1</td>
 <td>Diode A</td>
 </tr>
-
 <tr>
 <td>D3~</td>
 <td>HEAT_TOP (oder alles)</td>
 </tr>
-
 <tr>
 <td>D16</td>
 <td>HEAT_BOTTOM (nicht benutzt)</td>
 </tr>
-
 <tr>
 <td>D17</td>
 <td>HEAT_LED</td>
 </tr>
 </tbody>
 </table>
-
 <p>Einige Pins sind noch frei:</p>
-
 <table>
 <thead>
 <tr>
@@ -316,43 +258,33 @@ funktionieren.  Dann kostet alles zusammen weniger als 10 Dollar bei
 <th>Signal</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>D11~/MOSI</td>
 <td>frei</td>
 </tr>
-
 <tr>
 <td>D18/A4/SDA</td>
 <td>frei</td>
 </tr>
-
 <tr>
 <td>D19/A5/SCL</td>
 <td>frei</td>
 </tr>
 </tbody>
 </table>
-
 <p>D12 und D13 könnten durch Doppelbelegung mit LCD noch freigeschaufelt
 werden.</p>
-
 <p>Initialisierung des LCD: <code>LiquidCrystal lcd(8, 9, 4, 5, 6, 7);</code></p>
-
 <h2 id="stückliste-und-preise">Stückliste und Preise</h2>
-
 <p>Temperatursicherung:</p>
-
 <ul>
 <li>Reichelt MTS 240 Temperatursicherung, 10A, 240°C, 0,48€</li>
 <li>Reichelt MTS 228 Temperatursicherung, 10A, 228°C, 0,48€</li>
-<li>Pollin 260252 Temperatursicherung 227°C, 0,45€</li>
-<li>Pollin 260253 Temperatursicherung 240°C, 0,45€</li>
+<li>Pollin 260252	Temperatursicherung 227°C, 0,45€</li>
+<li>Pollin 260253	Temperatursicherung 240°C, 0,45€</li>
 </ul>
-
 <p>Steuerelektronik (alles von Aliexpress):</p>
-
 <ul>
 <li>Arduino Uno ($3,50)</li>
 <li>LCD-Keypad-Shield ($2,50)</li>
@@ -361,78 +293,57 @@ werden.</p>
 <li>Solid-State-Relais oder</li>
 <li>einfaches Relais-Modul für Arduino ($0,60)</li>
 </ul>
-
 <p>Gehäuse:</p>
-
 <ul>
 <li><a href="https://www.pollin.de/p/kunststoffgehaeuse-021-002-173-460006">Pollin 021-002-173</a> von Pollin
 (2,40€)</li>
 </ul>
-
 <p>Alles zusammen deutlich unter 15€.</p>
-
 <h2 id="andere-lösungen">Andere Lösungen</h2>
-
 <h3 id="thomas-pfeiffers-reflow-regelung">Thomas Pfeiffers Reflow-Regelung</h3>
-
 <p><a href="http://thomaspfeifer.net/backofen_smd_reflow.htm">Thomas Pfeiffers Reflow-Regelung</a>
 war das ursprüngliche Vorbild. Seine Platine liess sich aber nur sehr
 schlecht in das Ofengehäuse einbauen, deshalb bin auf die jetzige Lösung mit
 exterem Controllergehäuse umgeschwenkt.</p>
-
 <p>Seine Regelung arbeitet mit einer sehr einfachen Zweipunkt-Regelung. Die
 thermischen Verzögerungen meines Ofens waren aber viel zu groß für diesen
 Ansatz. In der Soaking-Phase haben sich Temperaturschwankungen von über 50K
 ergeben - nicht anwendbar.</p>
-
 <p>Sehr einfach aufgebaut:</p>
-
 <ul>
 <li>Si-Diode als Temperatursensor</li>
 <li>kein Display</li>
 <li>Solid-State-Relais Sharp S202S11</li>
 <li>max. 2 Kanäle, aber nur 1 verwendet.</li>
 </ul>
-
 <h3 id="controleo2">ControLeo2</h3>
-
 <p><a href="https://github.com/engineertype">Peter Easton</a> beschreibt in seiner
 erstklassigen Anleitung sehr detailliert, wie ein perfekter Ofen-Umbau
 aussehen sollte: <a href="http://www.whizoo.com/reflowoven">neue, sehr
 perfektionistische</a> und <a href="http://www.whizoo.com/c2">alte, etwas
 weniger anspruchsvolle</a> Version.</p>
-
 <p>Trotz seiner Mahnungen habe ich auf die Beschichtung des Innenraums mit
 Goldfolie und die Abdichtung kleiner Gehäuseöffnungen verzichtet, da ich nur
 kleine Platinenformate bleihaltig löten möchte - da sind die Anforderungen
 geringer.</p>
-
 <p>Er hat leider nur die
 <a href="https://github.com/engineertype/ControLeo2">Software</a>, nicht aber die
 Hardware veröffentlicht. Die von mir zusammengestellte Hardware ist seiner
 aber recht ähnlich geworden. Eine Portierung wäre nicht kompliziert, aber
 erst sinnvoll, wenn ich Ober- und Unterhitze getrennt ansteuerbar machen
 würde.</p>
-
 <p>Als Arduino-Lib geliefert, die Anwendung ist in examples/.</p>
-
 <p>Verwendet eine vereinfachte Version von LiquidCrystal: Feste Pinzuordnung,
 nur 4 bit, kein rw-Pin.</p>
-
 <h4 id="reflowoven">ReflowOven</h4>
-
 <p>Ursprungsversion.</p>
-
 <ul>
 <li>einfacher Temperatur-basierter Ansatz ähnlich laminator</li>
 <li>hat schon die 8-Segment-Ansteuerung als mini-PWM.</li>
 </ul>
-
 <h4 id="reflowoven2">ReflowOven2</h4>
-
 <p>Kompletter rewrite durch jemand anderen.
 LCD16x2, 2 Taster. Interessanter Ansatz.</p>
-
 <ul>
 <li>phasenbasiert, ähnlich meiner Software.</li>
 <li>Die Phasen sind im EEPROM.</li>
@@ -442,12 +353,9 @@ LCD16x2, 2 Taster. Interessanter Ansatz.</p>
 <li>exakt abwechselndes schalten möglich um den Spitzenverbrauch zu
 kontrollieren.</li>
 </ul>
-
 <h4 id="reflowwizard">ReflowWizard</h4>
-
 <p>Selbstlernend. Statt des starren 8-Bit-Musters für die Heizelemente kann der
 Duty-Cycle in 100 Schritten eingestellt werden.</p>
-
 <ul>
 <li>100 PWM-Stufen, 5s Periodendauer, 50ms/Stufe</li>
 <li>wenn eine Phase zu lange dauert, wird der Duty-Cycle erhöht. Ein wenig,
@@ -457,54 +365,35 @@ stark oder sehr stark, je nach Abweichung.</li>
 <li>verwendet nicht die normale Servo-Lib, sondern etwas eigenes.</li>
 <li>spielt kurze Melodien, wenn er durch ist</li>
 </ul>
-
 <h2 id="temperatursensor">Temperatursensor</h2>
-
 <p>Thomas Pfeiffer verwendet eine gewöhnliche Silizium-Diode als
 Temperatursensor. Er misst die Durchlassspannung der Diode an einem
 ADC-Eingang des Arduino und leitet daraus die Temperatur ab. Das
 funktioniert tatsächlich sehr gut und ist erstaunlich präzise, da dieser
 Temperaturkoeffizient eine wohldefinierte physikalische Materialkonstante
 des Siliziums ist.</p>
-
 <p>ControLeo2 verwendet ein richtiges Thermoelement. Hauptvorteile sind:</p>
-
 <ul>
 <li>keine Kalibrierung notwendig, es ergeben sich direkt absolute Messwerte</li>
 <li>extrem schnelle Erfassung von Temperaturänderungen durch die winzige Masse
 des Thermoelements.</li>
 </ul>
-
 <p>Ich habe zum Vergleich beide Sensoren eingebaut und die Resultate
 verglichen. Die Skalierung der Diode passt nicht richtig, aber das
 Verhalten ist trotzdem gut zu erkennen:</p>
-
-
 <figure>
-    
-        <img src="https://tenbaht.github.io/images/reflow-600.png" alt="Reflow soldering a PCB." />
-    
-    
-    <figcaption>
-        <p>
-        Reflow soldering a PCB.
-        
-            
-        
-        </p> 
-    </figcaption>
-    
+    <img src="https://tenbaht.github.io/images/reflow-600.png"
+         alt="Reflow soldering a PCB."/> <figcaption>
+            <p>Reflow soldering a PCB.</p>
+        </figcaption>
 </figure>
-
 
 <p>Bei statischen Messungen liefern beide vergleichbar gute Ergebnisse, bei
 schnellen Temperaturänderungen hinkt die Diode aber immer deutlich
 hinterher. Da es hier um genau diese schnellen Änderungen gehen soll, habe
 ich am Ende dann doch wie beim ControLeo2 ein richtiges Thermoelement
 verwendet.</p>
-
 <h2 id="hintergrundinfos">Hintergrundinfos</h2>
-
 <p>Präzise Temperaturmessung mit der pn-Strecke eines Transistors weitgehend
 unabhängig von Fertigungstoleranzen durch eine delta-Messung:
 <a href="http://www.analog.com/media/en/technical-documentation/application-notes/an137f.pdf">Linear Technology AN137</a></p>
@@ -530,7 +419,7 @@ unabhängig von Fertigungstoleranzen durch eine delta-Messung:
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2018-2019 - Michael Mayer | 
+        <h6>Copyright © 2018-2020 - Michael Mayer | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://tenbaht.github.io/index.xml">Subscribe</a></h6>
     </footer>

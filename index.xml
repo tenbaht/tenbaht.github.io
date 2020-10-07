@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Embedded notes</title>
     <link>https://tenbaht.github.io/</link>
     <description>Recent content on Embedded notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2018-2019 - Michael Mayer</copyright>
+    <copyright>Copyright &amp;copy; 2018-2020 - Michael Mayer</copyright>
     <lastBuildDate>Fri, 21 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://tenbaht.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,7 @@
       
       <guid>https://tenbaht.github.io/about/</guid>
       <description>I am a developer for embedded systems. I work on hardware as well as on low-level software.
-My current projects (apart from our three year old and another little guy coming very soon, which doesn&amp;rsquo;t leave much time for other things right now):</description>
+My current projects (apart from our two little sons, which don&amp;rsquo;t leave much time for other things right now):</description>
     </item>
     
     <item>
@@ -27,31 +27,19 @@ My current projects (apart from our three year old and another little guy coming
       <pubDate>Fri, 24 Jul 2020 14:18:20 +0200</pubDate>
       
       <guid>https://tenbaht.github.io/posts/installing-onetab-in-palemoon/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/titelbild.jpg&#34; alt=&#34;Installing Onetab in Palemoon&#34; /&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/titelbild.jpg&#34; alt=&#34;Installing Onetab in Palemoon&#34;&gt;
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://tenbaht.github.io/images/installing-onetab-in-palemoon.png&#34; alt=&#34;Onetab 1.9 running with palemoon 28.9.0.2&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;p&gt;
-        Onetab 1.9 running with palemoon 28.9.0.2
-        
-            
-        
-        &lt;/p&gt; 
-    &lt;/figcaption&gt;
-    
+    &lt;img src=&#34;https://tenbaht.github.io/images/installing-onetab-in-palemoon.png&#34;
+         alt=&#34;Onetab 1.9 running with palemoon 28.9.0.2&#34;/&gt; &lt;figcaption&gt;
+            &lt;p&gt;Onetab 1.9 running with palemoon 28.9.0.2&lt;/p&gt;
+        &lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;/p&gt;
-
 &lt;p&gt;The amazing and absolutely essential onetab extension is only available for
 firefox and chrome, not for the stripped-down firefox version palemoon. But
 with the help of archive.org and a text editor it is possible to install an
 older (but fully functional) version. A pre-patched add-on file is included
-in this posting.
-&lt;/p&gt;</description>
+in this posting.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -60,19 +48,14 @@ in this posting.
       <pubDate>Wed, 09 Oct 2019 13:54:54 +0200</pubDate>
       
       <guid>https://tenbaht.github.io/posts/converting-an-existing-linux-installation-to-uefi-boot/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/efiboot.png&#34; alt=&#34;Converting an Existing Linux Installation to UEFI Boot&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/efiboot.png&#34; alt=&#34;Converting an Existing Linux Installation to UEFI Boot&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Due to a hardware failure I had to move my Linux installation to a new
 Laptop that was configured for UEFI boot instead of the conventional BIOS
 boot.&lt;/p&gt;
-
 &lt;p&gt;Transfering the partition data from the old to the new laptop is
 straight forward. The problem is: How to add the existing installation to
 the UEFI boot menu?&lt;/p&gt;
-
-&lt;p&gt;As it turns out, this task is way easier than expected.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;As it turns out, this task is way easier than expected.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -82,35 +65,21 @@ the UEFI boot menu?&lt;/p&gt;
       
       <guid>https://tenbaht.github.io/posts/migrating-from-avra-to-avr-as/</guid>
       <description>&lt;figure&gt;
-    
-        &lt;img src=&#34;https://tenbaht.github.io/images/migrating-avra-title.png&#34; alt=&#34;assemble avra projects with avr-as&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;p&gt;
-        assemble avra projects with avr-as
-        
-            
-        
-        &lt;/p&gt; 
-    &lt;/figcaption&gt;
-    
+    &lt;img src=&#34;https://tenbaht.github.io/images/migrating-avra-title.png&#34;
+         alt=&#34;assemble avra projects with avr-as&#34;/&gt; &lt;figcaption&gt;
+            &lt;p&gt;assemble avra projects with avr-as&lt;/p&gt;
+        &lt;/figcaption&gt;
 &lt;/figure&gt;
-
 
 &lt;p&gt;The main advantage of avr-as over avra is the possibility to generate
 linkable .o object files that can be mixed with C files.&lt;/p&gt;
-
 &lt;p&gt;Unfortunatly, the syntax differs slightly between these two assemblers. And
 it turns out that the syntax differences are big enough to make the
 conversion of existing source code a non-trivial task that tends to take way
 longer than expected.&lt;/p&gt;
-
 &lt;p&gt;To save others some troubles in similar situations, here are my findings
 about &lt;a href=&#34;https://github.com/tenbaht/servo-motor-controller&#34;&gt;porting the SMC3&lt;/a&gt;
-project from avra to avr-as/gas.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+project from avra to avr-as/gas.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -149,7 +118,8 @@ freetz-Image compilieren Es gibt keine fertigen Images, sondern es muss erst sel
       
       <guid>https://tenbaht.github.io/posts/lessons-learned.de/</guid>
       <description>(Sorry, no english version yet.)
-Der Ofen funktioniert und tut genau das, was er soll. Gut. Aber der Weg dorthin war länger und umständlicher als er hätte sein müssen.</description>
+Der Ofen funktioniert und tut genau das, was er soll. Gut. Aber der Weg dorthin war länger und umständlicher als er hätte sein müssen.
+Was ich heute anders machen würde Immer eine eigene Platine Am Ende sehe ich mich wieder bestätigt: Niemals ohne richtige Platine.</description>
     </item>
     
     <item>
@@ -158,12 +128,9 @@ Der Ofen funktioniert und tut genau das, was er soll. Gut. Aber der Weg dorthin 
       <pubDate>Sun, 01 Apr 2018 00:02:36 +0200</pubDate>
       
       <guid>https://tenbaht.github.io/posts/reflow-oven/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/reflow-800.jpg&#34; alt=&#34;my reflow oven&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/reflow-800.jpg&#34; alt=&#34;my reflow oven&#34;&gt;&lt;/p&gt;
 &lt;p&gt;A while ago I found a toaster oven in the trash and now I converted it into
-a reflow oven for soldering of SMD circuit boards.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+a reflow oven for soldering of SMD circuit boards.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -172,12 +139,9 @@ a reflow oven for soldering of SMD circuit boards.&lt;/p&gt;
       <pubDate>Sun, 01 Apr 2018 00:02:36 +0200</pubDate>
       
       <guid>https://tenbaht.github.io/posts/reflow-oven.de/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/reflow-800.jpg&#34; alt=&#34;Mein SMD-reflow-Ofen&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;https://tenbaht.github.io/images/reflow-800.jpg&#34; alt=&#34;Mein SMD-reflow-Ofen&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Umbau eines einfachen Mini-Backofens in einen Reflow-Ofen zum Löten von
-SMD-Platinen.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+SMD-Platinen.&lt;/p&gt;</description>
     </item>
     
   </channel>
